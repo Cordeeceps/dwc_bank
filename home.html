@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+      <title>DWC Bank | Welcome</title>
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <!-- jQuery library -->
+      <script src="js/jquery.min.js"></script>
+      <!-- Latest compiled JavaScript -->
+      <script src="js/bootstrap.min.js"></script> 
+      <!-- CUSTOM CSS -->
+      <link href="css/final-project.css" rel="stylesheet">
+      <!-- FONTS -->
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+       <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+       
+       <!-- ADD FONT AWESOME ICONS---->
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       
+   </head>
+   <!-- NAVBAR ================================================== -->
+   <body class="landing-page">
+      <div class="navbar-wrapper">
+         <div class="container">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+               <div class="container">
+                  <div class="navbar-header">
+                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                     <span class="sr-only">Toggle navigation</span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     </button>
+                     <a style="color: #fff" class="navbar-brand" href="/index.html"><h6>DWC Bank</h6></a>
+                  </div>
+                  <div id="navbar" class="navbar-collapse collapse">
+                     <ul class="nav navbar-nav">
+                        <li class="active"><a style="color: #fff" href="/home.html">About Us</a></li>
+                        <li><a style="color: #fff" href="/healthy-recipes.html">Services</a></li>
+                        <li><a style="color: #fff" href="/comfort-food-recipes.html">Contact</a></li>
+                        <li class="dropdown">
+                           <a style="color: #fff" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dashboard <span class="caret"></span></a>
+                           <ul class="dropdown-menu">
+                              <li><a style="color: #fff" href="/recipe-index.html">Deposit</a></li>
+                               <li><a style="color: #fff" href="/contact-me.html">Withdraw</a></li>
+                               <li><a style="color: #fff" href="/contact-me.html">Transfer</a></li>
+                               <li><a style="color: #fff" href="/contact-me.html">Billing</a></li>
+                               <li><a style="color: #fff" href="/contact-me.html">Accounts</a></li>
+                               <li><a style="color: #fff" href="/contact-me.html">Profile</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                     <ul class="nav navbar-nav navbar-right">
+                        <li><a id="navbar-login-button" style="color: #fff" href="#"><h7>Login</h7></a></li>
+                     </ul>
+                  </div>
+               </div>
+            </nav>
+         </div>
+      </div>
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+
+       <div class="landing">
+           <div class="container">
+            <h2>Dark Web Credit Bank</h2>
+               <div class="divider-container"><div class="divider"></div></div>
+       <h1>Join the Digital Banking Revolution</h1>
+               <div class="button-container">
+                   <button data-toggle="modal" data-target="#loginModal">LOGIN</button> 
+                   <button>SIGN UP</button>
+               </div>
+               
+               <!-- Login Modal -->
+                <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">Login</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                            <small id="emailHelp" style="color: white" class="form-text">We'll never share your email with anyone else.</small>
+                          </div>
+                          <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password">
+                          </div>
+                        </form>
+                                              </div>
+                      <div class="modal-footer">
+                        <button type="button" data-dismiss="modal">Close</button>
+                        <button type="button" data-dismiss="modal" class=".btn-primary" id="modal-login-button">Login</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+           </div>
+       </div>
+   
+      <!-- FOOTER -->
+      <footer>
+         <div class="footer">
+        
+    <div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h3 style="color: white">Contact Us</h3>Please <a style="color: white" href="/contact-me.html">click here</a> to get in touch with us about suggestions, comments, or collaboration ideas!
+        </div>
+        <div class="col-md-4">
+             <!--- SOCIAL ICONS ---->
+            <a href="https://www.pinterest.com/cordeeceps/_saved/" class="fa fa-pinterest fa-lg" target="_blank"></a>
+            <a href="https://www.facebook.com/Meghan.Bothoff.Shanahan/" class="fa fa-facebook fa-lg" target="_blank"></a>
+            <a href="https://twitter.com/Cordeeceps" class="fa fa-twitter fa-lg" target="_blank"></a>
+            <a href="https://www.instagram.com/cordeeceps/" class="fa fa-instagram fa-lg" target="_blank"></a>
+            <a href="https://www.deviantart.com/cordeeceps" class="fa fa-deviantart fa-lg" target="_blank"></a>
+            <a href="https://toyhou.se/Scientist" class="fa fa-book fa-lg" target="_blank"></a>
+            <!---END SOCIAL ICONS --->
+        </div>
+        <div class="col-md-4" style="text-align: right">
+            <h4>Credits</h4>All images are from Unsplash. Website coded by TTE (Team Tax Evasion). All rights reserved.
+        </div>
+                </div>
+           </div>
+         </div>
+      </footer>
+      <!-- /.container -->
+      <!--- JAVASCRIPT ---->
+       <script>
+        // Get references to the login buttons
+        var modalLoginButton = document.getElementById('modal-login-button');
+        var navbarLoginButton = document.getElementById('navbar-login-button');
+
+        // Add an event listener to the modal login button
+        modalLoginButton.addEventListener('click', function() {
+        // Change the text of the navbar login button to "Logout"
+        navbarLoginButton.textContent = "Logout";
+        });
+           
+        navbarLoginButton.addEventListener('click', function() {
+        // Change the text of the navbar login button to "Logout"
+        navbarLoginButton.textContent = "Login";
+        });
+       </script>
+      <!-- Bootstrap core JavaScript
+         ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+      <script src="../../dist/js/bootstrap.min.js"></script>
+      <!-- End container-fluid class -->
+   </body>
+</html>

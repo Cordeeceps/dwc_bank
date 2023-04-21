@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+      <title>OnlyPans | All Recipes</title>
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <!-- jQuery library -->
+      <script src="js/jquery.min.js"></script>
+      <!-- Latest compiled JavaScript -->
+      <script src="js/bootstrap.min.js"></script> 
+      <!-- YOUR CUSTOM CSS -->
+      <link href="css/final-project.css" rel="stylesheet">
+      <!-- FONTS -->
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+       <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+       
+       <!-- ADD FONT AWESOME ICONS---->
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       
+      <style>
+       /* SEARCH BAR CSS */
+input[type=text] {
+  width: 130px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('https://i.gyazo.com/25e6f273001a69496df511346c92290f.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+/* GALLERY CSS */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1;
+  font-family: Arial;
+}
+
+/* Center website */
+.main {
+  max-width: 100%;
+  margin: auto;
+}
+
+h1 {
+  font-size: 50px;
+  word-break: break-all;
+}
+
+.row {
+  margin: 10px -16px;
+}
+
+/* Add padding BETWEEN each column */
+.row,
+.row > .column {
+  padding: 8px;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  display: none; /* Hide all elements by default */
+}
+
+/* Clear floats after rows */ 
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+.content {
+  background-color: white;
+  padding: 10px;
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
+
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #ddd;
+}
+
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+       
+</style>
+   </head>
+   <!-- NAVBAR
+      ================================================== -->
+   <body>
+      <div class="navbar-wrapper">
+         <div class="container">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+               <div class="container">
+                  <div class="navbar-header">
+                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                     <span class="sr-only">Toggle navigation</span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     </button>
+                     <a style="color: #fff" class="navbar-brand" href="http://csc06.simplystreet.com/project/index.html"><h3>OnlyPans</h3></a>
+                  </div>
+                  <div id="navbar" class="navbar-collapse collapse">
+                     <ul class="nav navbar-nav">
+                        <li><a style="color: #fff" href="http://csc06.simplystreet.com/project/index.html">Featured</a></li>
+                        <li><a style="color: #fff" href="http://csc06.simplystreet.com/project/healthy-recipes.html">Healthy Recipes</a></li>
+                        <li><a style="color: #fff" href="http://csc06.simplystreet.com/project/comfort-food-recipes.html">Comfort Food Recipes</a></li>
+                        <li class="active"><a style="color: #fff" href="http://csc06.simplystreet.com/project/all-recipes.html">View All Recipes</a></li>
+                        <li class="dropdown">
+                           <a style="color: #fff" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources <span class="caret"></span></a>
+                           <ul class="dropdown-menu">
+                              <li><a style="color: #fff" href="http://csc06.simplystreet.com/project/recipe-index.html">Nutrition Information</a></li>
+                               <li><a style="color: #fff" href="http://csc06.simplystreet.com/project/contact-me.html">Contact Me</a></li>
+                              <li><a style="color: #fff" href="https://www.pinterest.com/cordeeceps/healthy-recipes/" target="_blank">Healthy Recipes on Pinterest</a></li>
+                              <li><a style="color: #fff" href="https://www.pinterest.com/cordeeceps/recipes/" target="_blank">Comfort Food on Pinterest</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </nav>
+         </div>
+       </div>
+       
+       <!---CONTAINER #2 ---->
+       <div class="container marketing">
+                 <!------ GALLERY HTML ---->
+      <div class="main">
+<br><br>
+                      <!--- START FEATURED GALLERY HTML ---->
+<ul class="breadcrumb">
+  <li><a href="http://csc06.simplystreet.com/project/index.html">Home</a></li>
+  <li>All Recipes</li>
+</ul>
+
+<!---- END FEATURED GALLERY HTML --->
+         <h5>All Recipes<br>
+          <img src="https://i.imgur.com/qlfYsWK.png" width="90%"></h5>
+<h3>What are you looking for?</h3>
+<div id="myBtnContainer">
+  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+  <button class="btn" onclick="filterSelection('meals')"> Meals</button>
+  <button class="btn" onclick="filterSelection('sides')"> Snacks and Sides</button>
+  <button class="btn" onclick="filterSelection('dessert')"> Desserts</button>
+</div>
+
+<!-- Portfolio Gallery Grid -->
+<div class="row">
+  <div class="column meals">
+    <div class="content">
+      <a href="http://csc06.simplystreet.com/project/japanese-pork-katsu-recipe.html"><img src="https://thewoksoflife.com/wp-content/uploads/2015/03/katsudon-8.jpg" alt="stir fry" style="width:100%"></a>
+      <h2>Japanese Pork Katsu</h2>
+      <p>Thin-sliced, tempura-fried pork served over white rice and carmelized onions. Topped with egg, soy sauce, and a delicious mirin sauce. </p>
+    </div>
+  </div>
+  <div class="column meals">
+    <div class="content">
+    <a href="http://csc06.simplystreet.com/project/chili-con-carne-recipe.html"><img src="https://i2.wp.com/chilipeppermadness.com/wp-content/uploads/2019/01/Chili-Con-Carne-RECIPE5.jpg" alt="Lights" style="width:100%"></a>
+      <h2>Chili Con Carne</h2>
+      <p>Traditional chili with a Mexican twist!</p>
+    </div>
+  </div>
+  <div class="column meals">
+    <div class="content">
+    <a href="http://csc06.simplystreet.com/project/spicy-miso-ramen-recipe.html"><img src="https://cdn.discordapp.com/attachments/742809633193984071/805416025507627038/20210130_191021.jpg" alt="Nature" style="width:100%"></a>
+      <h2>Spicy Miso Ramen</h2>
+      <p>Every bit of this ramen is made from scratch. You may need to make a trip to your local Asian market, but it's well worth it!</p>
+    </div>
+  </div>
+  
+  <div class="column meals">
+    <div class="content">
+      <a href="http://csc06.simplystreet.com/project/chicken-tikka-masala-recipe.html"><img src="https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/9/3/0/FNK_the-best-chicken-tikka-masala_H_s4x3.jpg.rend.hgtvcom.616.462.suffix/1567523604572.jpeg" alt="Car" style="width:100%"></a>
+      <h2>Chicken Tikka Masala</h2>
+      <p>Aeromatic chicken with creamy sauce served over white rice and naan.</p>
+    </div>
+  </div>
+  <div class="column sides">
+    <div class="content">
+    <a href="denver-green-chili-recipe.html"><img src="https://i0.wp.com/frugalhausfrau.com/wp-content/uploads/2014/11/Denver-Green-Chili-1.jpg?ssl=1" alt="Car" style="width:100%"></a>
+      <h2>Denver Green Chili</h2>
+      <p>A Colorado specialty. Spicy green chili sauce with chunks of pork. Best enjoyed served over burritos.</p>
+    </div>
+  </div>
+  <div class="column sides">
+    <div class="content">
+    <a href="burbon-cranberry-sauce-recipe.html"><img src="https://www.momontimeout.com/wp-content/uploads/2016/11/best-ever-cranberry-sauce.jpg" alt="Car" style="width:100%"></a>
+      <h2>Burbon Cranberry Sauce</h2>
+      <p>A boozy take on a holiday staple. Orange zest and the perfect amount of sugar balance out this tart sauce.</p>
+    </div>
+  </div>
+
+  <div class="column dessert">
+    <div class="content">
+      <a href="http://csc06.simplystreet.com/project/mixed-berry-sweet-rolls-recipe.html"><img src="https://www.sprinklesomesugar.com/wp-content/uploads/2014/03/IMG_3919-749x1024.jpg" alt="Car" style="width:100%"></a>
+      <h2>Mixed Berry Sweet Rolls</h2>
+      <p>Fluffy, soft, sweet rolls with layers of homemade berry preserves topped with cream cheese icing.</p>
+    </div>
+  </div>
+  <div class="column dessert">
+    <div class="content">
+    <a href="http://csc06.simplystreet.com/project/strawberry-rhubarb-crumble-pie-recipe.html"><img src="https://i.gyazo.com/bd26e31d7ea1576916fa2fc5a71815ea.png" alt="Car" style="width:100%"></a>
+      <h2>Strawberry Rhubarb Crumble Pie</h2>
+      <p>The perfect balance of sweet and tart, this summer treat is topped with a nut crumble and has a flaky homemade crust.</p>
+    </div>
+  </div>
+  <div class="column dessert">
+    <div class="content">
+    <a href="http://csc06.simplystreet.com/project/hot-cocoa-cookies-recipe.html"><img src="https://i.gyazo.com/75ab2406f3cd8d877c893498871d3561.jpg" alt="Car" style="width:100%"></a>
+      <h2>Hot Cocoa Cookies</h2>
+      <p>Ooey gooey hot chocolate cookies with chocolate chips and mini marshmallows.</p>
+    </div> 
+  </div>
+    <div class="column meals">
+    <div class="content">
+      <a href="http://csc06.simplystreet.com/project/mushroom-chicken-stir-fry-recipe.html"><img src="https://diethood.com/wp-content/uploads/2019/09/Zucchini-Mushroom-Chicken-Panda-Express-Copycat-2.jpg" alt="stir fry" style="width:100%"></a>
+      <h2>Mushroom Chicken Stir Fry</h2>
+      <p>A quick and easy stir fry that'll scratch that Panda Express itch!</p>
+    </div>
+  </div>
+  <div class="column meals">
+    <div class="content">
+    <a href="http://csc06.simplystreet.com/project/spicy-shrimp-tacos-recipe.html"><img src="https://pinchofyum.com/wp-content/uploads/Shrimp-Tacos-with-Slaw.jpg" alt="Lights" style="width:100%"></a>
+      <h2>Spicy Shrimp Tacos</h2>
+      <p>Shrimp tacos with a kick! Includes a cilantro-lime sauce that's to die for.</p>
+    </div>
+  </div>
+  <div class="column meals">
+    <div class="content">
+    <a href="http://csc06.simplystreet.com/project/eggplant-lasagna-recipe.html"><img src="https://www.unicornsinthekitchen.com/wp-content/uploads/2020/01/eggplant-lasagna.jpg" alt="Nature" style="width:100%"></a>
+      <h2>Eggplant Lasagna</h2>
+      <p>Get your pasta fix without the carbs! Includes a recipe for a delicious, made from scratch, tomato meat sauce.</p>
+    </div>
+  </div>
+  
+  <div class="column sides">
+    <div class="content">
+      <a href="http://csc06.simplystreet.com/project/cauliflower-mac-and-cheese-recipe.html"><img src="https://www.willcookforsmiles.com/wp-content/uploads/2020/04/Cauliflower-Mac-and-Cheese-4-1.jpg" alt="Car" style="width:100%"></a>
+      <h2>Cauliflower Mac and Cheese</h2>
+      <p>Extra gooey.</p>
+    </div>
+  </div>
+  <div class="column sides">
+    <div class="content">
+    <a href="iced-matcha-latte-recipe.html"><img src="https://gimmedelicious.com/wp-content/uploads/2018/03/Iced-Matcha-Latte2.jpg" alt="Car" style="width:100%"></a>
+      <h2>Iced Matcha Latte</h2>
+      <p>Cool, refreashing, earthy.</p>
+    </div>
+  </div>
+  <div class="column sides">
+    <div class="content">
+    <a href="loaded-cauliflower-mash-recipe.html"><img src="https://d104wv11b7o3gc.cloudfront.net/wp-content/uploads/2016/09/low-carb-loaded-cauliflower-4-600x902.jpg" alt="Car" style="width:100%"></a>
+      <h2>Loaded Cauliflower Mash</h2>
+      <p>A low-carb replacement to one of the best comfort food side dishes of all time.</p>
+    </div>
+  </div>
+
+  <div class="column dessert">
+    <div class="content">
+      <a href="http://csc06.simplystreet.com/project/paleo-apple-crisp-recipe.html"><img src="https://coconutsandkettlebells.com/wp-content/uploads/chewy-chocolate-chip-cookies.jpg" alt="Car" style="width:100%"></a>
+      <h2>Paleo Apple Crisp</h2>
+      <p>Perfect for fall. Get all that warm, cinnamony goodness without the extra sugar!</p>
+    </div>
+  </div>
+  <div class="column dessert">
+    <div class="content">
+    <a href="http://csc06.simplystreet.com/project/keto-blueberry-muffins-recipe.html"><img src="https://i2.wp.com/www.melaniecooks.com/wp-content/uploads/2019/12/blueberry_muffins_low_carb-772x1030.jpg" alt="Car" style="width:100%"></a>
+      <h2>Keto Blueberry Muffins</h2>
+      <p>I've had friends tell me that they can't tell the difference between these and regular blueberry muffins.</p>
+    </div>
+  </div>
+  <div class="column dessert">
+    <div class="content">
+    <a href="http://csc06.simplystreet.com/project/keto-mini-cheesecakes-recipe.html"><img src="https://greenandketo.com/wp-content/uploads/2019/04/minicheesecake-1.jpg" alt="Car" style="width:100%"></a>
+      <h2>Keto Mini Cheesecakes</h2>
+      <p>Perfectly portioned cheesecakes with strawberry sauce and no sugar!</p>
+      </div></div>
+<!-- END GRID -->
+</div>
+
+<!-- END MAIN -->
+</div>  
+<!---- END GALLERY HTML --->  
+           
+<!---- GALLERY JAVASCRIPT ---->
+        <script>
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("column");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace("active", " ");
+    this.className += " active";
+  });
+}
+</script>
+<!---- END GALLERY JAVASCRIPT --->         
+       </div>
+<!--- END CONTAINER 2 --->
+       
+     <!-- FOOTER -->
+      <footer>
+         <div class="footer">
+        
+                         <div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h3 style="color: white">Contact Me!</h3>Please <a style="color: lightblue" href="http://csc06.simplystreet.com/project/contact-me.html">click here</a> to get in touch with me about suggestions, comments, or collaboration ideas!
+        </div>
+        <div class="col-md-4">
+             <!--- SOCIAL ICONS ---->
+            <a href="https://www.pinterest.com/cordeeceps/_saved/" class="fa fa-pinterest fa-lg" target="_blank"></a>
+            <a href="https://www.facebook.com/Meghan.Bothoff.Shanahan/" class="fa fa-facebook fa-lg" target="_blank"></a>
+            <a href="https://twitter.com/Cordeeceps" class="fa fa-twitter fa-lg" target="_blank"></a>
+            <a href="https://www.instagram.com/cordeeceps/" class="fa fa-instagram fa-lg" target="_blank"></a>
+            <a href="https://www.deviantart.com/cordeeceps" class="fa fa-deviantart fa-lg" target="_blank"></a>
+            <a href="https://toyhou.se/Scientist" class="fa fa-book fa-lg" target="_blank"></a>
+            <!---END SOCIAL ICONS --->
+        </div>
+        <div class="col-md-4" style="text-align: right">
+            <h4>Credits</h4>All images are either taken from Unsplash or are taken by me. Website coded by me (with love). :)
+        </div>
+                </div>
+           </div>
+         </div>
+      </footer>
+      <!-- /.container -->
+      <!-- Bootstrap core JavaScript
+         ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+      <script src="../../dist/js/bootstrap.min.js"></script>
+      <!-- End container-fluid class -->
+   </body>
+</html>
