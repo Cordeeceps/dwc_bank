@@ -5,14 +5,14 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-      <title>DWC Bank | Welcome</title>
+      <title>OnlyPans | Featured Recipes</title>
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <!-- jQuery library -->
       <script src="js/jquery.min.js"></script>
       <!-- Latest compiled JavaScript -->
       <script src="js/bootstrap.min.js"></script> 
-      <!-- CUSTOM CSS -->
+      <!-- YOUR CUSTOM CSS -->
       <link href="css/final-project.css" rel="stylesheet">
       <!-- FONTS -->
       <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -23,17 +23,83 @@
       <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
        <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
-       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
-       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
        
        <!-- ADD FONT AWESOME ICONS---->
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
        
+       <style>
+       /*CAROUSEL CSS */
+        .carousel-caption
+           {
+               font-family: 'Itim', cursive;
+    font-size: 20px;
+	letter-spacing: 1px;
+               background-color: rgba(0, 0, 0, 0.6);
+           }
+           
+        /* GALLERY CSS */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+.header {
+  text-align: center;
+  padding: 32px;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+           
+#about {
+        background-color: rgba(120, 190, 251, 0.6);
+        border-radius: 25px;
+           }
+       </style>
    </head>
    <!-- NAVBAR ================================================== -->
-   <body class="landing-page">
+   <body>
       <div class="navbar-wrapper">
          <div class="container">
             <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -50,17 +116,17 @@
                   <div id="navbar" class="navbar-collapse collapse">
                      <ul class="nav navbar-nav">
                         <li class="active"><a style="color: #fff" href="/home.html">About Us</a></li>
-                        <li><a style="color: #fff" href="/healthy-recipes.html">Services</a></li>
-                        <li><a style="color: #fff" href="/comfort-food-recipes.html">Contact</a></li>
+                        <li><a style="color: #fff" href="/services.html">Services</a></li>
+                        <li><a style="color: #fff" href="/contact-me.html">Contact</a></li>
                         <li class="dropdown">
                            <a style="color: #fff" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dashboard <span class="caret"></span></a>
                            <ul class="dropdown-menu">
-                              <li><a style="color: #fff" href="/recipe-index.html">Deposit</a></li>
-                               <li><a style="color: #fff" href="/contact-me.html">Withdraw</a></li>
-                               <li><a style="color: #fff" href="/contact-me.html">Transfer</a></li>
-                               <li><a style="color: #fff" href="/contact-me.html">Billing</a></li>
-                               <li><a style="color: #fff" href="/contact-me.html">Accounts</a></li>
-                               <li><a style="color: #fff" href="/contact-me.html">Profile</a></li>
+                              <li><a style="color: #fff" href="/deposit.html">Deposit</a></li>
+                               <li><a style="color: #fff" href="/withdraw.html">Withdraw</a></li>
+                               <li><a style="color: #fff" href="/transfer.html">Transfer</a></li>
+                               <li><a style="color: #fff" href="/billing.html">Billing</a></li>
+                               <li><a style="color: #fff" href="/accounts.html">Accounts</a></li>
+                               <li><a style="color: #fff" href="/profile.html">Profile</a></li>
                            </ul>
                         </li>
                      </ul>
@@ -72,51 +138,19 @@
             </nav>
          </div>
       </div>
+    
       <!-- Wrap the rest of the page in another container to center all the content. -->
-
-       <div class="landing">
-           <div class="container">
-            <h2>Dark Web Credit Bank</h2>
-               <div class="divider-container"><div class="divider"></div></div>
-       <h1>Join the Digital Banking Revolution</h1>
-               <div class="button-container">
-                   <button data-toggle="modal" data-target="#loginModal">LOGIN</button> 
-                   <button>SIGN UP</button>
-               </div>
-               
-               <!-- Login Modal -->
-                <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h2 class="modal-title" id="exampleModalLabel">Login</h2>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <form>
-                          <div class="form-group">
-                            <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-                            <small id="emailHelp" style="color: white" class="form-text">We'll never share your email with anyone else.</small>
-                          </div>
-                          <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password">
-                          </div>
-                        </form>
-                                              </div>
-                      <div class="modal-footer">
-                        <button type="button" data-dismiss="modal">Close</button>
-                        <button type="button" data-dismiss="modal" class=".btn-primary" id="modal-login-button">Login</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-           </div>
-       </div>
-   
+<div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>Text Side</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate turpis at odio euismod, vel finibus enim rhoncus. Suspendisse interdum justo a ipsum hendrerit rhoncus. Nullam et nibh ut dolor pulvinar dignissim. Donec suscipit, nisl vel bibendum varius, tortor dolor tristique ex, sed commodo dolor arcu nec elit. </p>
+        </div>
+        <div class="col-md-6">
+          <img src="https://npr.brightspotcdn.com/dims4/default/c783a00/2147483647/strip/true/crop/5028x3084+0+0/resize/880x540!/quality/90/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F9a%2F71%2Fe6d0014845e5889b2ef39b3d7c66%2Fjievani-weerasinghe-nhrm1u4gd-a-unsplash.jpg" class="img-fluid h-100">
+        </div>
+      </div>
+    </div>
       <!-- FOOTER -->
       <footer>
          <div class="footer">
@@ -144,23 +178,6 @@
          </div>
       </footer>
       <!-- /.container -->
-      <!--- JAVASCRIPT ---->
-       <script>
-        // Get references to the login buttons
-        var modalLoginButton = document.getElementById('modal-login-button');
-        var navbarLoginButton = document.getElementById('navbar-login-button');
-
-        // Add an event listener to the modal login button
-        modalLoginButton.addEventListener('click', function() {
-        // Change the text of the navbar login button to "Logout"
-        navbarLoginButton.textContent = "Logout";
-        });
-           
-        navbarLoginButton.addEventListener('click', function() {
-        // Change the text of the navbar login button to "Logout"
-        navbarLoginButton.textContent = "Login";
-        });
-       </script>
       <!-- Bootstrap core JavaScript
          ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->
