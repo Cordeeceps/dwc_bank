@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
+    <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-      <title>DWC Bank | Services</title>
+      <title>DWC Bank | Contact Us</title>
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <!-- jQuery library -->
@@ -27,48 +27,101 @@
        
        <!-- ADD FONT AWESOME ICONS---->
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-  .text-side {
-    overflow: auto;
-    height: 100vh;
-    background-color: rgba(30, 28, 42, 1);
-    color: #ffffff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 50px;
-    margin-right: -15px;
-  }
+   <style>   
+/* FORM CSS */
+.form-style-10 {
+	width: 85%;
+	padding: 30px;
+	margin: 40px auto;
+	background: #4D5157;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+}
 
-  .text-main {
-    flex: 1;
-    padding: 0;
-    margin: 0;
-  }
+.form-style-10 .inner-wrap {
+	padding: 30px;
+	background: #696D73;
+	border-radius: 6px;
+	margin-bottom: 15px;
+}
 
-  .image-side {
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    margin-left: -15px;
-  }
+.form-style-10 h1 {
+	background: #bbe88f;
+	padding: 20px 30px 15px 30px;
+	margin: -30px -30px 30px -30px;
+	border-radius: 10px 10px 0 0;
+	color: #000;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
+	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	border: 1px solid #bbe88f;
+}
 
-  @media screen and (max-width: 768px) {
-    .text-side {
-      height: auto;
-      padding: 20px;
-      margin-right: 0;
-    }
+.form-style-10 h1>span {
+	display: block;
+	margin-top: 2px;
+	font: 13px Arial, Helvetica, sans-serif;
+}
 
-    .container-fluid {
-      margin-top: 200px;
-    }
-  }
-    
-</style>
-    
-    </head>
+.form-style-10 label {
+	display: block;
+	font: 15px Arial, Helvetica, sans-serif;
+	color: #888;
+	margin-bottom: 15px;
+}
+
+.form-style-10 input[type="text"],
+.form-style-10 input[type="date"],
+.form-style-10 input[type="datetime"],
+.form-style-10 input[type="email"],
+.form-style-10 input[type="number"],
+.form-style-10 input[type="search"],
+.form-style-10 input[type="time"],
+.form-style-10 input[type="url"],
+.form-style-10 input[type="password"],
+.form-style-10 textarea,
+.form-style-10 select {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 8px;
+	border-radius: 6px;
+	border: 2px solid #000;
+	box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+}
+
+.form-style-10 .section {
+	font-family: 'Roboto Mono', monospace;
+	color: #bbe88f;
+	margin-bottom: 5px;
+}
+
+.form-style-10 .section span {
+	background: #bbe88f;
+	padding: 5px 10px 5px 10px;
+	position: absolute;
+	border-radius: 50%;
+	border: 4px solid #000;
+	font-size: 14px;
+	margin-left: -45px;
+	color: #000;
+	margin-top: -3px;
+}
+
+.form-style-10 input[type="button"],
+.form-style-10 input[type="submit"] {
+	background: #bbe88f;
+	padding: 8px 20px 8px 20px;
+	border-radius: 5px;
+	color: #000;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
+	font-family: 'Roboto Mono', monospace;
+	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	border: 1px solid #bbe88f;
+	font-size: 15px;
+}
+
+       </style>
+   </head>
     <!-- NAVBAR ================================================== -->
    <body>
       <div class="navbar-wrapper">
@@ -87,13 +140,13 @@
                   <div id="navbar" class="navbar-collapse collapse">
                      <ul class="nav navbar-nav">
                         <li><a style="color: #fff" href="/about-us.html">About Us</a></li>
-                        <li class="active"><a style="color: #fff" href="/services.html">Services</a></li>
-                        <li><a style="color: #fff" href="/contact-us.html">Contact</a></li>
+                        <li><a style="color: #fff" href="/services.html">Services</a></li>
+                        <li class="active"><a style="color: #fff" href="/contact-us.html">Contact</a></li>
                         <li class="dropdown">
                            <a style="color: #fff" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dashboard <span class="caret"></span></a>
                            <ul class="dropdown-menu">
-                               <li><a style="color: #fff" href="/dashboard.html">User Dashboard</a></li>
-                              <li><a style="color: #fff" href="/deposit.html">Deposit</a></li>
+                              <li><a style="color: #fff" href="/dashboard.html">User Dashboard</a></li>
+                               <li><a style="color: #fff" href="/deposit.html">Deposit</a></li>
                                <li><a style="color: #fff" href="/withdraw.html">Withdraw</a></li>
                                <li><a style="color: #fff" href="/transfer.html">Transfer</a></li>
                                <li><a style="color: #fff" href="/billing.html">Billing</a></li>
@@ -110,30 +163,51 @@
             </nav>
          </div>
       </div>
-      <!-- Wrap the rest of the page in another container to center all the content. -->
+<div class="container">
+         <div class="form-style-10">
+            <form action="60-contact-us.php" method="post">
+               <h1>Contact Us<span>Please fill out the form below and someone will reach out to you within 1 business day.</span></h1>
+            <form>
+               <div class="section"><span>1</span>Would you like to see this concept site become a fully developed recipe repository someday?</div>
+               <div class="inner-wrap">
+                  <label><input type="radio" value="yes" name="site" id="site"> Yes</label>
+                  <label><input type="radio" value="no" name="site" id="site"> No</label>
+               </div>
+               <div class="section"><span>2</span>What kind of recipes are you interested in?</div>
+               <div class="inner-wrap">
+                  <input type="checkbox" value="healthy" name="site[]" id="site[]"> Healthy Recipes<br> 
+                  <input type="checkbox" value="vegetarian" name="site[]" id="site[]"> Vegetarian Recipes<br>
+                  <input type="checkbox" value="comfort" name="site[]" id="site[]"> Comfort Food<br>
+                  <input type="checkbox" value="ethnic" name="site[]" id="site[]"> Authentic Ethnic Recipes<br>
+                  <input type="checkbox" value="dessert" name="site[]" id="site[]"> Desserts<br>
+                  <input type="checkbox" value="anything" name="site[]" id="site[]"> Any New Recipes<br>
+               </div>
+               <div class="section"><span>3</span>Sign up to get new recipes right in your inbox! (Not Really)</div>
+               <div class="inner-wrap">
+                  <label for="email">Email address:</label>
+                  <input type="email" name="email" id="email"><br>
+                  <label for="firstName">First Name:</label>
+                  <input type="text" size="12" maxlength="12" name="fName" id="fName"><br>
+                  <label for="lastName">Last Name:</label>
+                  <input type="text" name="lName" id="lName"><br>
+                  <label for="password">Password:</label>
+                  <input type="password" size="12" maxlength="12" id="passwd" name="passwd"><br>
+               </div>
+               <div class="section"><span>4</span>Feedback</div>
+               <div class="inner-wrap">
+                  <textarea rows="10" cols="50" name="comments" wrap="physical" placeholder="Enter your comments here" id="comments"></textarea><br><br>
+               </div>
+               <div class="section">
+                  <button type="submit" name="submit">Submit Form</button>
+                  <button type="reset" >Clear Form</button>
+               </div>
+            </form>
+      </div>
+    </div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-6 order-md-1 image-side">
-      <img src="https://i.ibb.co/xGSVWGG/jason-leung-SAYzxu-S1-O3-M-unsplash.jpg" class="img-fluid w-100" style="height: 100vh;">
-    </div>
-    <div class="col-md-6 order-md-2 text-side">
-      <h5 style="color: darkseagreen">our services</h5>
-      <p style="margin-bottom: 40px; color:lightgoldenrodyellow">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam volutpat commodo sed egestas egestas fringilla phasellus. Erat imperdiet sed euismod nisi porta lorem mollis. Nisl purus in mollis nunc sed id semper risus in. Ultricies integer quis auctor elit sed vulputate mi. Porttitor leo a diam sollicitudin tempor id. </p>
-        
-<ul style="list-style-type: disc; padding-left: 20px;">
-  <li style="margin-bottom: 10px;"><b>Service:</b> Diam volutpat commodo sed egestas egestas fringilla phasellus.</li>
-  <li style="margin-bottom: 10px;"><b>Service:</b> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-  <li style="margin-bottom: 10px;"><b>Service:</b> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
-  <li style="margin-bottom: 10px;"><b>Service:</b> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
-</ul>
-        <div style="text-align: center;">
-        <a href="/contact-us.html"><button>CONTACT US</button></a>
-        </div>
-    </div>
-  </div>
 </div>
- <!-- FOOTER -->
+       
+<!-- FOOTER -->
       <footer>
          <div class="footer">
         
@@ -159,7 +233,8 @@
            </div>
          </div>
       </footer>
-      <!-- /.container -->
+      <!-- END FOOTER -->
+       
       <!--- JAVASCRIPT ---->
        <script>
         // Get references to the login buttons
@@ -177,6 +252,16 @@
         navbarLoginButton.textContent = "Login";
         });
        </script>
+      <!-- Bootstrap core JavaScript
+         ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+      <script src="../../dist/js/bootstrap.min.js"></script>
+      <!-- End container-fluid class -->
+   </body>
+</html>
+      <!-- /.container -->
       <!-- Bootstrap core JavaScript
          ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->

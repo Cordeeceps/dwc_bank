@@ -83,7 +83,7 @@ ul.nav a:hover { color: #bbe88f !important; }
 }
 
 .footer {
-	position: absolute;
+	position: fixed;
     bottom: 0;
     width: 100%;
     color: #bbe88f;
@@ -159,8 +159,8 @@ a:hover {
 h1 {
 	color: #fff;
 	text-align: center;
-	font-family: 'Oswald', sans-serif;
-	font-size: 100px;
+	font-family: 'Orbitron', sans-serif;
+	font-size: 80px;
 	margin-bottom: 0px;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -252,6 +252,14 @@ h8 {
   margin-bottom: 0;
 }
 
+/* Container with extra padding on the bottom */
+.container-2 {
+  width: 100%;
+  margin-bottom: 60px;
+  overflow: auto;
+  margin-top: 20px;
+}
+
 /* POPUP CSS */
 /* Style the modal content */
 .modal-content {
@@ -319,7 +327,6 @@ h8 {
 
 .fa {
 	padding: 20px;
-	width: 60px;
 	text-align: center;
 	text-decoration: none;
 	border-radius: 50%;
@@ -446,31 +453,6 @@ a.button4:hover {
 	margin-top: 10px;
 	text-align: right;
 }
-
-/* START BREADCRUMB CSS */
-ul.breadcrumb {
-  padding: 10px 16px;
-  list-style: none;
-  background-color: #eee;
-}
-ul.breadcrumb li {
-  display: inline;
-  font-size: 14px;
-}
-ul.breadcrumb li+li:before {
-  padding: 8px;
-  color: black;
-  content: "/\00a0";
-}
-ul.breadcrumb li a {
-  color: #0275d8;
-  text-decoration: none;
-}
-ul.breadcrumb li a:hover {
-  color: #01447e;
-  text-decoration: underline;
-}
-
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
