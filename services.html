@@ -5,7 +5,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-      <title>OnlyPans | Featured Recipes</title>
+      <title>DWC Bank | Services</title>
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <!-- jQuery library -->
@@ -21,84 +21,55 @@
       <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
-       <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
        
        <!-- ADD FONT AWESOME ICONS---->
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-       
-       <style>
-       /*CAROUSEL CSS */
-        .carousel-caption
-           {
-               font-family: 'Itim', cursive;
-    font-size: 20px;
-	letter-spacing: 1px;
-               background-color: rgba(0, 0, 0, 0.6);
-           }
-           
-        /* GALLERY CSS */
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Arial;
-}
-
-.header {
-  text-align: center;
-  padding: 32px;
-}
-
-.row {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-  padding: 0 4px;
-}
-
-/* Create four equal columns that sits next to each other */
-.column {
-  -ms-flex: 25%; /* IE10 */
-  flex: 25%;
-  max-width: 25%;
-  padding: 0 4px;
-}
-
-.column img {
-  margin-top: 8px;
-  vertical-align: middle;
-  width: 100%;
-}
-
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 800px) {
-  .column {
-    -ms-flex: 50%;
-    flex: 50%;
-    max-width: 50%;
+<style>
+  .text-side {
+    overflow: auto;
+    height: 100vh;
+    background-color: #333333;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 50px;
+    margin-right: -15px;
   }
-}
 
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column {
-    -ms-flex: 100%;
-    flex: 100%;
-    max-width: 100%;
+  .text-main {
+    flex: 1;
+    padding: 0;
+    margin: 0;
   }
-}
-           
-#about {
-        background-color: rgba(120, 190, 251, 0.6);
-        border-radius: 25px;
-           }
-       </style>
-   </head>
-   <!-- NAVBAR ================================================== -->
+
+  .image-side {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    margin-left: -15px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .text-side {
+      height: auto;
+      padding: 20px;
+      margin-right: 0;
+    }
+
+    .container-fluid {
+      margin-top: 200px;
+    }
+  }
+    
+</style>
+    
+    </head>
+    <!-- NAVBAR ================================================== -->
    <body>
       <div class="navbar-wrapper">
          <div class="container">
@@ -115,9 +86,9 @@ body {
                   </div>
                   <div id="navbar" class="navbar-collapse collapse">
                      <ul class="nav navbar-nav">
-                        <li class="active"><a style="color: #fff" href="/home.html">About Us</a></li>
+                        <li class="active"><a style="color: #fff" href="/about-us.html">About Us</a></li>
                         <li><a style="color: #fff" href="/services.html">Services</a></li>
-                        <li><a style="color: #fff" href="/contact-me.html">Contact</a></li>
+                        <li><a style="color: #fff" href="/contact-us.html">Contact</a></li>
                         <li class="dropdown">
                            <a style="color: #fff" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dashboard <span class="caret"></span></a>
                            <ul class="dropdown-menu">
@@ -138,29 +109,39 @@ body {
             </nav>
          </div>
       </div>
-    
       <!-- Wrap the rest of the page in another container to center all the content. -->
+
 <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-6">
-          <h1>Text Side</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate turpis at odio euismod, vel finibus enim rhoncus. Suspendisse interdum justo a ipsum hendrerit rhoncus. Nullam et nibh ut dolor pulvinar dignissim. Donec suscipit, nisl vel bibendum varius, tortor dolor tristique ex, sed commodo dolor arcu nec elit. </p>
-        </div>
-        <div class="col-md-6">
-          <img src="https://npr.brightspotcdn.com/dims4/default/c783a00/2147483647/strip/true/crop/5028x3084+0+0/resize/880x540!/quality/90/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F9a%2F71%2Fe6d0014845e5889b2ef39b3d7c66%2Fjievani-weerasinghe-nhrm1u4gd-a-unsplash.jpg" class="img-fluid h-100">
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-md-6 order-md-1 image-side">
+      <img src="https://i.ibb.co/xGSVWGG/jason-leung-SAYzxu-S1-O3-M-unsplash.jpg" class="img-fluid w-100" style="height: 100vh;">
     </div>
-      <!-- FOOTER -->
+    <div class="col-md-6 order-md-2 text-side">
+      <h5 style="color: darkseagreen">our services</h5>
+      <p style="margin-bottom: 40px; color:lightgoldenrodyellow">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam volutpat commodo sed egestas egestas fringilla phasellus. Erat imperdiet sed euismod nisi porta lorem mollis. Nisl purus in mollis nunc sed id semper risus in. Ultricies integer quis auctor elit sed vulputate mi. Porttitor leo a diam sollicitudin tempor id. </p>
+        
+<ul style="list-style-type: disc; padding-left: 20px;">
+  <li style="margin-bottom: 10px;"><b>Service:</b> Diam volutpat commodo sed egestas egestas fringilla phasellus.</li>
+  <li style="margin-bottom: 10px;"><b>Service:</b> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+  <li style="margin-bottom: 10px;"><b>Service:</b> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
+  <li style="margin-bottom: 10px;"><b>Service:</b> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+</ul>
+        <div style="text-align: center;">
+        <a href="/contact-us.html"><button>CONTACT US</button></a>
+        </div>
+    </div>
+  </div>
+</div>
+ <!-- FOOTER -->
       <footer>
          <div class="footer">
         
     <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <h3 style="color: white">Contact Us</h3>Please <a style="color: white" href="/contact-me.html">click here</a> to get in touch with us about suggestions, comments, or collaboration ideas!
+            <h3 style="color: white">Contact Us</h3>Please <a style="color: white" href="/contact-us.html">click here</a> to get in touch with us about suggestions, comments, or collaboration ideas!
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 text-center">
              <!--- SOCIAL ICONS ---->
             <a href="https://www.pinterest.com/cordeeceps/_saved/" class="fa fa-pinterest fa-lg" target="_blank"></a>
             <a href="https://www.facebook.com/Meghan.Bothoff.Shanahan/" class="fa fa-facebook fa-lg" target="_blank"></a>
@@ -178,6 +159,23 @@ body {
          </div>
       </footer>
       <!-- /.container -->
+      <!--- JAVASCRIPT ---->
+       <script>
+        // Get references to the login buttons
+        var modalLoginButton = document.getElementById('modal-login-button');
+        var navbarLoginButton = document.getElementById('navbar-login-button');
+
+        // Add an event listener to the modal login button
+        modalLoginButton.addEventListener('click', function() {
+        // Change the text of the navbar login button to "Logout"
+        navbarLoginButton.textContent = "Logout";
+        });
+           
+        navbarLoginButton.addEventListener('click', function() {
+        // Change the text of the navbar login button to "Logout"
+        navbarLoginButton.textContent = "Login";
+        });
+       </script>
       <!-- Bootstrap core JavaScript
          ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->
