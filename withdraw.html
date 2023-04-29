@@ -237,7 +237,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="dropdown2">Destination</label>
-                    <select class="form-control" id="dropdown2" onchange="updateBalance()">
+                    <select class="form-control" id="dropdown2" onchange="updateBalance(); updateWithdrawalOptions();">
                         <option selected disabled>Select Local ATM or Delivery</option>
                         <option value="local-atm" data-balance="1200.50">Local ATM</option>
                         <option value="delivery" data-balance="3000.00">Delivery</option>
@@ -260,45 +260,37 @@
     </div>
 </div>
 
-<!-- Withdrawal confirmation popup -->
-<div id="withdrawal-confirmation-popup" class="popup">
+<!-- Withdrawal confirmation popup for Local ATM -->
+<div id="local-atm-confirmation-popup" class="popup" style="display:none;">
     <div class="popup-content">
-        <h2 style="margin-bottom:20px;">Enter Pickup Information</h2>
-        <p style="color:white; font-size: 18px; font-family: 'Roboto Mono', monospace;">Withdrawal Amount: <br>$<span id="withdrawal-amount"></span></p>
-        <label for="account-number">Account Number:</label>
-        <input type="text" id="account-number">
-        <br>
-        <label for="routing-number">Routing Number:</label>
-        <input type="text" id="routing-number">
-        <br>
-        <label for="check-image">Check Image:</label>
-        <input type="file" id="check-image">
+        <h2 style="margin-bottom:20px;">Select a Branch</h2>
+        <p style="color:white; font-size: 18px; font-family: 'Roboto Mono', monospace;">Withdrawal Amount: <br>$<span id="local-atm-withdrawal-amount"></span></p>
+        <label for="branch-dropdown">Branch:</label>
+        <select id="branch-dropdown">
+            <option value="branch1">Branch 1</option>
+            <option value="branch2">Branch 2</option>
+            <option value="branch3">Branch 3</option>
+        </select>
         <br>
         <div style="text-align: center;">
-            <button type="button" onclick="withdraw()">SUBMIT</button>
+            <button type="button" onclick="withdrawFromLocalATM()">SUBMIT</button>
             <button type="button" onclick="hideConfirmationPopup()">CANCEL</button>
         </div>
     </div>
 </div>
-<!--- END WITHDRAW --->
 
-
-<!-- Withdrawal confirmation popup -->
-<div id="withdrawal-confirmation-popup" class="popup">
+<!-- Withdrawal confirmation popup for Delivery -->
+<div id="delivery-confirmation-popup" class="popup" style="display:none;">
     <div class="popup-content">
         <h2 style="margin-bottom:20px;">Enter Pickup Information</h2>
-        <p style="color:white; font-size: 18px; font-family: 'Roboto Mono', monospace;">Withdrawal Amount: <br>$<span id="withdrawal-amount"></span></p>
-        <label for="account-number">Account Number:</label>
-        <input type="text" id="account-number">
-        <br>
-        <label for="routing-number">Routing Number:</label>
-        <input type="text" id="routing-number">
-        <br>
-        <label for="check-image">Check Image:</label>
-        <input type="file" id="check-image">
+        <p style="color:white; font-size: 18px; font-family: 'Roboto Mono', monospace;">Withdrawal Amount: <br>$<span id="delivery-withdrawal-amount"></span></p>
+        <div class="form-group">
+            <label class="form-label" for="pickupAddress">Address</label>
+            <input class="form-control" type="text" id="pickupAddress" placeholder="Enter your address">
+        </div>
         <br>
         <div style="text-align: center;">
-            <button type="button" onclick="updateBalance()">SUBMIT</button>
+            <button type="button" onclick="withdrawForDelivery()">SUBMIT</button>
             <button type="button" onclick="hideConfirmationPopup()">CANCEL</button>
         </div>
     </div>
@@ -335,45 +327,93 @@
        
       <!--- JAVASCRIPT ---->
 <script>
-  // BALANCE SCRIPT
-  function updateBalance() {
-    var dropdown = document.getElementById("dropdown1");
-    var selectedOption = dropdown.options[dropdown.selectedIndex];
-    var balance = parseFloat(selectedOption.getAttribute("data-balance"));
-    document.getElementById("accountBalance").textContent = "$" + balance.toFixed(2);
+// BALANCE SCRIPT
+function updateBalance() {
+  var dropdown = document.getElementById("dropdown1");
+  var selectedOption = dropdown.options[dropdown.selectedIndex];
+  var balance = parseFloat(selectedOption.getAttribute("data-balance"));
+  document.getElementById("accountBalance").textContent = "$" + balance.toFixed(2);
+}
+
+function withdraw() {
+  var dropdown = document.getElementById("dropdown1");
+  var selectedOption = dropdown.options[dropdown.selectedIndex];
+  var balance = parseFloat(selectedOption.getAttribute("data-balance"));
+  var withdrawalAmount = parseFloat(document.getElementById("amount").value);
+  var newBalance = balance - withdrawalAmount;
+  selectedOption.setAttribute("data-balance", newBalance.toFixed(2));
+  updateBalance();
+  hideConfirmationPopup();
+}
+
+// WITHDRAWAL SCRIPT
+// Function to show the withdrawal confirmation popup
+function showConfirmationPopup() {
+  var dropdown = document.getElementById("dropdown2");
+  var selectedOption = dropdown.options[dropdown.selectedIndex].value;
+  var withdrawalAmount = parseFloat(document.getElementById("amount").value);
+
+  if (selectedOption === "local-atm") {
+    document.getElementById("local-atm-withdrawal-amount").textContent = withdrawalAmount.toFixed(2);
+    document.getElementById("local-atm-confirmation-popup").style.display = "block";
+  } else if (selectedOption === "delivery") {
+    document.getElementById("delivery-withdrawal-amount").textContent = withdrawalAmount.toFixed(2);
+    document.getElementById("delivery-confirmation-popup").style.display = "block";
   }
+}
 
-  function withdraw() {
-    var dropdown = document.getElementById("dropdown1");
-    var selectedOption = dropdown.options[dropdown.selectedIndex];
-    var balance = parseFloat(selectedOption.getAttribute("data-balance"));
-    var withdrawalAmount = parseFloat(document.getElementById("amount").value);
-    var newBalance = balance - withdrawalAmount;
-    selectedOption.setAttribute("data-balance", newBalance.toFixed(2));
-    updateBalance();
-    hideConfirmationPopup();
+// Function to show the corresponding popup based on the selected destination
+function showPopup() {
+  var destination = document.getElementById("dropdown2").value;
+  if (destination === "local-atm") {
+    document.getElementById("local-atm-confirmation-popup").style.display = "block";
+  } else if (destination === "delivery") {
+    document.getElementById("delivery-confirmation-popup").style.display = "block";
   }
+}
 
-  // WITHDRAW SCRIPT
-  // Function to show the withdrawal confirmation popup
-  function showConfirmationPopup() {
-    // Get the selected account and withdrawal amount from the form
-    var account = document.getElementById("dropdown1").value;
-    var withdrawalAmount = document.getElementById("amount").value;
+// Function to hide the withdrawal confirmation popup
+function hideConfirmationPopup() {
+  document.getElementById("local-atm-confirmation-popup").style.display = "none";
+  document.getElementById("delivery-confirmation-popup").style.display = "none";
+}
 
-    // Display the withdrawal amount in the confirmation popup
-    document.getElementById("withdrawal-amount").innerHTML = withdrawalAmount;
+// Function to withdraw money from a local ATM
+function withdrawFromLocalATM() {
+  // Get the selected account, withdrawal amount, and branch from the form
+  var account = document.getElementById("dropdown1").value;
+  var withdrawalAmount = parseFloat(document.getElementById("amount").value);
+  var branch = document.getElementById("branch-dropdown").value;
 
-    // Show the withdrawal confirmation popup
-    document.getElementById("withdrawal-confirmation-popup").style.display = "block";
-  }
+  // Update the account balance
+  var selectedOption = document.querySelector("#dropdown1 option:checked");
+  var balance = parseFloat(selectedOption.getAttribute("data-balance"));
+  var newBalance = balance - withdrawalAmount;
+  selectedOption.setAttribute("data-balance", newBalance.toFixed(2));
+  updateBalance();
 
-  // Function to hide the withdrawal confirmation popup
-  function hideConfirmationPopup() {
-    // Hide the withdrawal confirmation popup
-    document.getElementById("withdrawal-confirmation-popup").style.display = "none";
-  }
+  // Hide the confirmation popup
+  hideConfirmationPopup();
+}
 
+// Function to withdraw money for delivery
+function withdrawForDelivery() {
+  // Get the selected account and withdrawal amount from the form
+  var account = document.getElementById("dropdown1").value;
+  var withdrawalAmount = parseFloat(document.getElementById("amount").value);
+  var pickupAddress = document.getElementById("pickupAddress").value;
+
+  // Update the account balance
+  var selectedOption = document.querySelector("#dropdown1 option:checked");
+  var balance = parseFloat(selectedOption.getAttribute("data-balance"));
+  var newBalance = balance - withdrawalAmount;
+  selectedOption.setAttribute("data-balance", newBalance.toFixed(2));
+  updateBalance();
+
+  // Hide the confirmation popup
+  hideConfirmationPopup();
+}
+    
   // LOGIN SCRIPT
   // Get references to the login buttons
   var modalLoginButton = document.getElementById("modal-login-button");
@@ -389,6 +429,19 @@
     // Change the text of the navbar login button to "Login"
     navbarLoginButton.textContent = "Login";
   });
+
+  // Function to show/hide target input fields based on the selected option in dropdown2
+  function showTargetInput() {
+    var dropdown = document.getElementById("dropdown2");
+    var selectedOption = dropdown.options[dropdown.selectedIndex];
+    var targetInput = document.getElementById("target-input");
+
+    if (selectedOption.value == "local-atm") {
+      targetInput.style.display = "none";
+    } else {
+      targetInput.style.display = "block";
+    }
+  }
 </script>
 
       <!-- Bootstrap core JavaScript
