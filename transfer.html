@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+      <title>DWC Bank | User Dashboard</title>
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <!-- jQuery library -->
+      <script src="js/jquery.min.js"></script>
+      <!-- Latest compiled JavaScript -->
+      <script src="js/bootstrap.min.js"></script> 
+      <!-- YOUR CUSTOM CSS -->
+      <link href="css/final-project.css" rel="stylesheet">
+      <!-- FONTS -->
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+       
+       <!-- ADD FONT AWESOME ICONS---->
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       <script src="https://kit.fontawesome.com/fff1c5954d.js" crossorigin="anonymous"></script>
+       
+
+<style> 
+.text-main {
+  flex: 1;
+  padding: 0;
+  margin: 0;
+}
+
+.header {
+  text-align: center;
+}
+
+.icon-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 0 50%; /* Updated */
+  max-width: 100%;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+    
+.form-label {
+  font-size: 16px;
+  font-family: 'Roboto Mono', monospace;
+  color: white;
+}
+    
+.form-container {
+  width: 100%;
+  margin-top: -35px;
+}
+
+/* Add the following styles to display the icons in two rows of three */
+@media (min-width: 768px) {
+  .icon-container {
+    justify-content: space-between;
+    padding: 80px 20px;
+  }
+  
+  .icon:nth-child(n+4) {
+    margin-top: 40px;
+  }
+    
+      .header {
+      font-size: 20px;
+      padding: 10px;
+    }
+}
+
+    .form-group #amount::before {
+  content: '$';
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+    
+/* Adjust the .container-dashboard class to accommodate the header */
+.container-dashboard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 65%;
+  min-height: 45%;
+  background-color: #363444;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* POPUP STYLES */
+/* Popup window styles */
+.popup {
+  display: none; /* Hide the popup by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.7); /* Black background with opacity */
+}
+
+/* Popup content styles */
+.popup-content {
+  background-color: #363444;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Set the width to 80% of the parent container */
+  max-width: 500px;
+  align-items: center;
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+  position: relative; /* Add position property to enable absolute positioning */
+}
+
+/* Branch dropdown label styles */
+#local-atm-confirmation-popup label {
+  display: block;
+  margin-bottom: 10px;
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* Branch dropdown styles */
+#branch-dropdown {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-family: 'Roboto Mono', monospace;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1; /* Add a background color to the dropdown */
+  margin-bottom: 20px;
+  color: black;
+}
+
+/* Placeholder text for the dropdown */
+#branch-dropdown option[value=""][disabled] {
+  display: none;
+}
+
+#branch-dropdown option {
+  font-size: 16px;
+  font-family: 'Roboto Mono', monospace;
+  color: black;
+}
+
+/* Styling the arrow icon */
+.select-arrow {
+  position: absolute;
+  right: 10px;
+  top: 14px;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  background-color: white;
+  transform: rotate(45deg);
+}
+
+.select-arrow:before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -7px;
+  width: 16px;
+  height: 16px;
+  background-color: inherit;
+  transform: rotate(-45deg);
+}
+
+/* Submit and cancel button styles */
+.popup-content button {
+  width: 40%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  font-family: 'Roboto Mono', monospace;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.popup-content button:hover {
+  background-color: floralwhite;
+}
+
+/* Center the buttons */
+.popup-content div {
+  display: flex;
+  justify-content: center;
+}
+
+/* Add margin between the branch dropdown and buttons */
+.popup-content #branch-dropdown {
+  margin-bottom: 30px;
+}
+    
+.popup-content input[type=text], 
+.popup-content input[type=file] {
+  color: black;
+}
+
+/* Form styles */
+.form-group {
+  margin: 10px 0;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.form-control {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 25px;
+}
+
+/* Styling for confirmation popup */
+#deposit-confirmation-popup label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#deposit-confirmation-popup input[type="text"],
+#deposit-confirmation-popup input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+#deposit-confirmation-popup button {
+  margin-top: 10px;
+}
+    
+    
+</style>
+    
+    </head>
+   <!-- NAVBAR ================================================== -->
+   <body>
+      <div class="navbar-wrapper">
+         <div class="container">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+               <div class="container">
+                  <div class="navbar-header">
+                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                     <span class="sr-only">Toggle navigation</span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     </button>
+                     <a style="color: #fff" class="navbar-brand" href="/index.html"><h6>DWC Bank</h6></a>
+                  </div>
+                  <div id="navbar" class="navbar-collapse collapse">
+                     <ul class="nav navbar-nav">
+                        <li><a style="color: #fff" href="/about-us.html">About Us</a></li>
+                        <li><a style="color: #fff" href="/services.html">Services</a></li>
+                        <li><a style="color: #fff" href="/contact-us.html">Contact</a></li>
+                        <li class="dropdown">
+                           <a style="color: #fff" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dashboard <span class="caret"></span></a>
+                           <ul class="dropdown-menu">
+                              <li><a style="color: #fff" href="/dashboard.html">User Dashboard</a></li>
+                               <li><a style="color: #fff" href="/deposit.html">Deposit</a></li>
+                               <li><a style="color: #fff" href="/withdraw.html">Withdraw</a></li>
+                               <li><a style="color: #fff" href="/transfer.html">Transfer</a></li>
+                               <li><a style="color: #fff" href="/billing.html">Billing</a></li>
+                               <li><a style="color: #fff" href="/accounts.html">Accounts</a></li>
+                               <li><a style="color: #fff" href="/profile.html">Profile</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                     <ul class="nav navbar-nav navbar-right">
+                        <li><a id="navbar-login-button" style="color: #fff" href="#"><h7>Login</h7></a></li>
+                     </ul>
+                  </div>
+               </div>
+            </nav>
+         </div>
+      </div>
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+       
+<!-- TRANSFER WINDOW --->
+<div class="container-dashboard">
+    <h1>Transfer Money</h1>
+    <h6>Select an account</h6>
+    <div class="icon-container">
+        <div class="form-container">
+            <form>
+                <div class="form-group">
+                    <label class="form-label" for="dropdownFrom">From</label>
+                    <select class="form-control" id="dropdownFrom" onchange="updateBalance()">
+                        <option selected disabled>Select an account</option>
+                        <option value="checking" data-balance="1200.50">Checking ...3821</option>
+                        <option value="savings" data-balance="3000.00">Savings ...5748</option>
+                        <option value="bitcoin" data-balance="20201.21">Bitcoin ...1337</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="accountBalance">Account Balance</label>
+                    <span style="color:white; font-size: 20px; font-family: Orbitron, sans-serif;" id="accountBalance">ACCOUNT BALANCE HERE</span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="dropdownTo">To One of My Accounts</label>
+                    <select class="form-control" id="dropdownTo" onchange="updateBalance()">
+                        <option selected disabled>Select an Account</option>
+                        <option value="checking" data-balance="1200.50">Checking ...3821</option>
+                        <option value="savings" data-balance="3000.00">Savings ...5748</option>
+                        <option value="bitcoin" data-balance="20201.21">Bitcoin ...1337</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="destinationAccount">To Someone Else's Account</label>
+                    <input class="form-control" type="text" id="destinationAccount" placeholder="Enter account number">
+                </div>
+                <div style="text-align: center;">
+                    <button type="button" onclick="confirmTransfer()">CONFIRM</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+       
+<!-- POPUP WINDOW FOR TRANSFERRING TO ONE OF MY ACCOUNTS -->
+<div id="popup1" class="overlay">
+  <div class="popup">
+    <h2>Transfer Money</h2>
+    <a class="close" href="#">&times;</a>
+    <div class="content">
+        <form>
+            <div class="form-group">
+                <label class="form-label">From:</label>
+                <span class="account-details" id="fromAccountDetails"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="toAccount">To:</label>
+                <span class="account-details" id="toAccountDetails"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="amountToTransfer">Amount to Transfer:</label>
+                <input class="form-control" type="text" id="amountToTransfer" placeholder="$0.00">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="transferDate">Transfer Date:</label>
+                <input class="form-control" type="date" id="transferDate">
+            </div>
+            <div class="form-group">
+                <label class="form-check-label" for="repeatTransfer">Repeat this transaction every month</label>
+                <input class="form-check-input" type="checkbox" id="repeatTransfer">
+            </div>
+            <div class="form-group">
+                <button type="button" onclick="transferToMyAccount()">Transfer</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
+<!-- POPUP WINDOW FOR TRANSFERRING TO SOMEONE ELSE'S ACCOUNT -->
+<div id="popup2" class="overlay">
+  <div class="popup">
+    <h2>Transfer Money</h2>
+    <a class="close" href="#">&times;</a>
+    <div class="content">
+        <form>
+            <div class="form-group">
+                <label class="form-label">From:</label>
+                <span class="account-details" id="fromAccountDetails2"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="toAccount2">To:</label>
+                <span class="account-details" id="toAccountDetails2"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="destinationBalance">Destination Balance:</label>
+                <span class="balance-details">$1234.56</span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="amountToTransfer2">Amount to Transfer:</label>
+                <input class="form-control" type="text" id="amountToTransfer2" placeholder="$0.00">
+            </div>
+            <div class="form-group">
+                <button type="button" onclick="transferToOtherAccount()">Transfer</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>      
+<!--- END TRANSFER --->
+       
+       <!-- FOOTER -->
+    <footer>
+         <div class="footer">
+        
+    <div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h3 style="color: white">Contact Us</h3>Please <a style="color: white" href="/contact-us.html">click here</a> to get in touch with us about suggestions, comments, or collaboration ideas!
+        </div>
+        <div class="col-md-4 text-center">
+             <!--- SOCIAL ICONS ---->
+            <a href="https://www.pinterest.com/cordeeceps/_saved/" class="fa fa-pinterest fa-lg" target="_blank"></a>
+            <a href="https://www.facebook.com/Meghan.Bothoff.Shanahan/" class="fa fa-facebook fa-lg" target="_blank"></a>
+            <a href="https://twitter.com/Cordeeceps" class="fa fa-twitter fa-lg" target="_blank"></a>
+            <a href="https://www.instagram.com/cordeeceps/" class="fa fa-instagram fa-lg" target="_blank"></a>
+            <a href="https://www.deviantart.com/cordeeceps" class="fa fa-deviantart fa-lg" target="_blank"></a>
+            <a href="https://toyhou.se/Scientist" class="fa fa-book fa-lg" target="_blank"></a>
+            <!---END SOCIAL ICONS --->
+        </div>
+        <div class="col-md-4" style="text-align: right">
+            <h4>Credits</h4>All images are from Unsplash. Website coded by TTE (Team Tax Evasion). All rights reserved.
+        </div>
+                </div>
+           </div>
+         </div>
+      </footer>
+      <!-- /.container -->  
+       
+      <!--- JAVASCRIPT ---->
+<script>
+// BALANCE SCRIPT
+function updateBalance() {
+  var dropdown = document.getElementById("dropdown1");
+  var selectedOption = dropdown.options[dropdown.selectedIndex];
+  var balance = parseFloat(selectedOption.getAttribute("data-balance"));
+  document.getElementById("accountBalance").textContent = "$" + balance.toFixed(2);
+}
+
+// WITHDRAWAL SCRIPT
+function withdraw() {
+  var accountType = document.getElementById("dropdown1").value;
+  var withdrawalAmount = parseFloat(document.getElementById("amount").value);
+  var selectedOption = document.getElementById("dropdown1").options[document.getElementById("dropdown1").selectedIndex];
+  var accountBalance = parseFloat(selectedOption.getAttribute("data-balance"));
+
+  if (isNaN(withdrawalAmount) || withdrawalAmount <= 0) {
+    alert("Error: Please enter a valid withdrawal amount.");
+    return;
+  }
+
+  if (withdrawalAmount > accountBalance) {
+    alert("Error: You do not have enough funds to withdraw this amount.");
+    withdrawalAmount = accountBalance;
+  }
+
+  switch (accountType) {
+    case "checking":
+      accountBalance -= withdrawalAmount;
+      selectedOption.setAttribute("data-balance", accountBalance.toFixed(2));
+      break;
+    case "savings":
+      accountBalance -= withdrawalAmount;
+      selectedOption.setAttribute("data-balance", accountBalance.toFixed(2));
+      break;
+    case "bitcoin":
+      accountBalance -= withdrawalAmount;
+      selectedOption.setAttribute("data-balance", accountBalance.toFixed(2));
+      break;
+    default:
+      alert("Error: Please select an account.");
+      return;
+  }
+
+  document.getElementById("accountBalance").textContent = "$" + accountBalance.toFixed(2);
+  document.getElementById("amount").value = "";
+  alert("Your withdrawal of $" + withdrawalAmount.toFixed(2) + " has been processed.");
+}
+
+// Function to show the withdrawal confirmation popup
+function showConfirmationPopup() {
+  var dropdown = document.getElementById("dropdown2");
+  var selectedOption = dropdown.options[dropdown.selectedIndex].value;
+  var withdrawalAmount = parseFloat(document.getElementById("amount").value);
+
+  if (selectedOption === "local-atm") {
+    document.getElementById("local-atm-withdrawal-amount").textContent = withdrawalAmount.toFixed(2);
+    document.getElementById("local-atm-confirmation-popup").style.display = "block";
+  } else if (selectedOption === "delivery") {
+    document.getElementById("delivery-withdrawal-amount").textContent = withdrawalAmount.toFixed(2);
+    document.getElementById("delivery-confirmation-popup").style.display = "block";
+  }
+}
+
+// Function to show the corresponding popup based on the selected destination
+function showPopup() {
+  var destination = document.getElementById("dropdown2").value;
+  if (destination === "local-atm") {
+    document.getElementById("local-atm-confirmation-popup").style.display = "block";
+  } else if (destination === "delivery") {
+    document.getElementById("delivery-confirmation-popup").style.display = "block";
+  }
+}
+
+// Function to hide the withdrawal confirmation popup
+function hideConfirmationPopup() {
+  document.getElementById("local-atm-confirmation-popup").style.display = "none";
+  document.getElementById("delivery-confirmation-popup").style.display = "none";
+}
+
+// Function to withdraw money from a local ATM
+function withdrawFromLocalATM() {
+  // Get the selected account, withdrawal amount, and branch from the form
+  var account = document.getElementById("dropdown1").value;
+  var withdrawalAmount = parseFloat(document.getElementById("amount").value);
+  var branch = document.getElementById("branch-dropdown").value;
+
+  // Update the account balance
+  var selectedOption = document.querySelector("#dropdown1 option:checked");
+  var balance = parseFloat(selectedOption.getAttribute("data-balance"));
+  var newBalance = balance - withdrawalAmount;
+  selectedOption.setAttribute("data-balance", newBalance.toFixed(2));
+  updateBalance();
+
+  // Hide the confirmation popup
+  hideConfirmationPopup();
+}
+
+// Function to withdraw money for delivery
+function withdrawForDelivery() {
+  // Get the selected account and withdrawal amount from the form
+  var account = document.getElementById("dropdown1").value;
+  var withdrawalAmount = parseFloat(document.getElementById("amount").value);
+  var pickupAddress = document.getElementById("pickupAddress").value;
+
+  // Update the account balance
+  var selectedOption = document.querySelector("#dropdown1 option:checked");
+  var balance = parseFloat(selectedOption.getAttribute("data-balance"));
+  var newBalance = balance - withdrawalAmount;
+  selectedOption.setAttribute("data-balance", newBalance.toFixed(2));
+  updateBalance();
+
+  // Hide the confirmation popup
+  hideConfirmationPopup();
+}
+    
+  // LOGIN SCRIPT
+  // Get references to the login buttons
+  var modalLoginButton = document.getElementById("modal-login-button");
+  var navbarLoginButton = document.getElementById("navbar-login-button");
+
+  // Add an event listener to the modal login button
+  modalLoginButton.addEventListener("click", function () {
+    // Change the text of the navbar login button to "Logout"
+    navbarLoginButton.textContent = "Logout";
+  });
+
+  navbarLoginButton.addEventListener("click", function () {
+    // Change the text of the navbar login button to "Login"
+    navbarLoginButton.textContent = "Login";
+  });
+
+  // Function to show/hide target input fields based on the selected option in dropdown2
+  function showTargetInput() {
+    var dropdown = document.getElementById("dropdown2");
+    var selectedOption = dropdown.options[dropdown.selectedIndex];
+    var targetInput = document.getElementById("target-input");
+
+    if (selectedOption.value == "local-atm") {
+      targetInput.style.display = "none";
+    } else {
+      targetInput.style.display = "block";
+    }
+  }
+</script>
+
+      <!-- Bootstrap core JavaScript
+         ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+      <script src="../../dist/js/bootstrap.min.js"></script>
+      <!-- End container-fluid class -->
+   </body>
+</html>
