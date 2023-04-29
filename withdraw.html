@@ -325,8 +325,8 @@
                     <label class="form-label" for="dropdown2">Destination</label>
                     <select class="form-control" id="dropdown2" onchange="updateBalance(); updateWithdrawalOptions();">
                         <option selected disabled>Select Local ATM or Delivery</option>
-                        <option value="local-atm" data-balance="1200.50">Local ATM</option>
-                        <option value="delivery" data-balance="3000.00">Delivery</option>
+                        <option value="local-atm">Local ATM</option>
+                        <option value="delivery">Delivery</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -368,7 +368,7 @@
 <!-- Withdrawal confirmation popup for Delivery -->
 <div id="delivery-confirmation-popup" class="popup" style="display:none;">
     <div class="popup-content">
-        <h2 style="margin-bottom:20px;">Enter Pickup Information</h2>
+        <h2 style="margin-bottom:20px;">Shipping Information</h2>
         <p style="color:white; font-size: 18px; font-family: 'Roboto Mono', monospace;">Withdrawal Amount: <br>$<span id="delivery-withdrawal-amount"></span></p>
         <p style="color:white; font-size: 18px; font-family: 'Roboto Mono', monospace;">Shipping Address: <br></p>
         <div class="form-group">
