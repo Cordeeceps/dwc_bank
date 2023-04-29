@@ -124,6 +124,12 @@
   max-width: 500px;
   align-items: center;
   color: white;
+  font-family: 'Roboto Mono', monospace;
+}
+    
+.popup-content input[type=text], 
+.popup-content input[type=file] {
+  color: black;
 }
 
 /* Form styles */
@@ -133,18 +139,17 @@
 
 .form-label {
   display: block;
-  font-weight: bold;
   margin-bottom: 5px;
   color: white;
+  font-family: 'Orbitron', sans-serif;
 }
 
 .form-control {
   width: 100%;
-  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
 }
 
 /* Styling for confirmation popup */
@@ -230,7 +235,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="accountBalance">Account Balance:</label><br>
+                    <label class="form-label" for="accountBalance">Account Balance:</label>
                     <span style="color:white; font-size: 20px; font-family: Orbitron, sans-serif;" id="accountBalance">ACCOUNT BALANCE HERE</span>
                 </div>
                 <div class="form-group">
@@ -250,7 +255,7 @@
 <div id="deposit-confirmation-popup" class="popup">
     <div class="popup-content">
         <h2 style="margin-bottom:20px;">Enter Check Information</h2>
-        <p>Deposit Amount: <span id="deposit-amount"></span></p>
+        <p style="color:white; font-size: 18px; font-family: 'Roboto Mono', monospace;">Deposit Amount: <br>$<span id="deposit-amount"></span></p>
         <label for="account-number">Account Number:</label>
         <input type="text" id="account-number">
         <br>
