@@ -430,18 +430,46 @@ function updateBalance() {
   document.getElementById("accountBalance").textContent = "$" + balance.toFixed(2);
 }
 
+// WITHDRAWAL SCRIPT
 function withdraw() {
-  var dropdown = document.getElementById("dropdown1");
-  var selectedOption = dropdown.options[dropdown.selectedIndex];
-  var balance = parseFloat(selectedOption.getAttribute("data-balance"));
+  var accountType = document.getElementById("dropdown1").value;
   var withdrawalAmount = parseFloat(document.getElementById("amount").value);
-  var newBalance = balance - withdrawalAmount;
-  selectedOption.setAttribute("data-balance", newBalance.toFixed(2));
-  updateBalance();
-  hideConfirmationPopup();
+  var selectedOption = document.getElementById("dropdown1").options[document.getElementById("dropdown1").selectedIndex];
+  var accountBalance = parseFloat(selectedOption.getAttribute("data-balance"));
+
+  if (isNaN(withdrawalAmount) || withdrawalAmount <= 0) {
+    alert("Error: Please enter a valid withdrawal amount.");
+    return;
+  }
+
+  if (withdrawalAmount > accountBalance) {
+    alert("Error: You do not have enough funds to withdraw this amount.");
+    withdrawalAmount = accountBalance;
+  }
+
+  switch (accountType) {
+    case "checking":
+      accountBalance -= withdrawalAmount;
+      selectedOption.setAttribute("data-balance", accountBalance.toFixed(2));
+      break;
+    case "savings":
+      accountBalance -= withdrawalAmount;
+      selectedOption.setAttribute("data-balance", accountBalance.toFixed(2));
+      break;
+    case "bitcoin":
+      accountBalance -= withdrawalAmount;
+      selectedOption.setAttribute("data-balance", accountBalance.toFixed(2));
+      break;
+    default:
+      alert("Error: Please select an account.");
+      return;
+  }
+
+  document.getElementById("accountBalance").textContent = "$" + accountBalance.toFixed(2);
+  document.getElementById("amount").value = "";
+  alert("Your withdrawal of $" + withdrawalAmount.toFixed(2) + " has been processed.");
 }
 
-// WITHDRAWAL SCRIPT
 // Function to show the withdrawal confirmation popup
 function showConfirmationPopup() {
   var dropdown = document.getElementById("dropdown2");
