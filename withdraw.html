@@ -219,15 +219,15 @@
       </div>
       <!-- Wrap the rest of the page in another container to center all the content. -->
        
-<!--- DEPOSIT WINDOW --->
+<!--- WITHDRAW WINDOW --->
 <div class="container-dashboard">
-    <h1>Deposit Check</h1>
+    <h1>Withdraw Money</h1>
     <h6>select an account</h6>
     <div class="icon-container">
         <div class="form-container">
             <form>
                 <div class="form-group">
-                    <label class="form-label" for="dropdown1">To</label>
+                    <label class="form-label" for="dropdown1">From</label>
                     <select class="form-control" id="dropdown1" onchange="updateBalance()">
                         <option selected disabled>Select an account</option>
                         <option value="checking" data-balance="1200.50">Checking ...3821</option>
@@ -236,27 +236,35 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="accountBalance">Account Balance:</label>
+                    <label class="form-label" for="dropdown2">Destination</label>
+                    <select class="form-control" id="dropdown2" onchange="updateBalance()">
+                        <option selected disabled>Select Local ATM or Delivery</option>
+                        <option value="local-atm" data-balance="1200.50">Local ATM</option>
+                        <option value="delivery" data-balance="3000.00">Delivery</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="accountBalance">Account Balance</label>
                     <span style="color:white; font-size: 20px; font-family: Orbitron, sans-serif;" id="accountBalance">ACCOUNT BALANCE HERE</span>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="amount">Amount to Deposit</label>
+                    <label class="form-label" for="amount">Amount</label>
                     <input class="form-control" type="text" id="amount" placeholder="$0.00">
                 </div>
 
                 <div style="text-align: center;">
-                    <button type="button" onclick="showConfirmationPopup()">DEPOSIT</button>
+                    <button type="button" onclick="showConfirmationPopup()">WITHDRAW</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-<!-- Deposit confirmation popup -->
-<div id="deposit-confirmation-popup" class="popup">
+<!-- Withdrawal confirmation popup -->
+<div id="withdrawal-confirmation-popup" class="popup">
     <div class="popup-content">
-        <h2 style="margin-bottom:20px;">Enter Check Information</h2>
-        <p style="color:white; font-size: 18px; font-family: 'Roboto Mono', monospace;">Deposit Amount: <br>$<span id="deposit-amount"></span></p>
+        <h2 style="margin-bottom:20px;">Enter Pickup Information</h2>
+        <p style="color:white; font-size: 18px; font-family: 'Roboto Mono', monospace;">Withdrawal Amount: <br>$<span id="withdrawal-amount"></span></p>
         <label for="account-number">Account Number:</label>
         <input type="text" id="account-number">
         <br>
@@ -266,11 +274,36 @@
         <label for="check-image">Check Image:</label>
         <input type="file" id="check-image">
         <br>
-        <button onclick="deposit()">Submit</button>
-        <button onclick="hideConfirmationPopup()">Cancel</button>
+        <div style="text-align: center;">
+            <button type="button" onclick="withdraw()">SUBMIT</button>
+            <button type="button" onclick="hideConfirmationPopup()">CANCEL</button>
+        </div>
     </div>
 </div>
-<!--- END DEPOSIT --->
+<!--- END WITHDRAW --->
+
+
+<!-- Withdrawal confirmation popup -->
+<div id="withdrawal-confirmation-popup" class="popup">
+    <div class="popup-content">
+        <h2 style="margin-bottom:20px;">Enter Pickup Information</h2>
+        <p style="color:white; font-size: 18px; font-family: 'Roboto Mono', monospace;">Withdrawal Amount: <br>$<span id="withdrawal-amount"></span></p>
+        <label for="account-number">Account Number:</label>
+        <input type="text" id="account-number">
+        <br>
+        <label for="routing-number">Routing Number:</label>
+        <input type="text" id="routing-number">
+        <br>
+        <label for="check-image">Check Image:</label>
+        <input type="file" id="check-image">
+        <br>
+        <div style="text-align: center;">
+            <button type="button" onclick="updateBalance()">SUBMIT</button>
+            <button type="button" onclick="hideConfirmationPopup()">CANCEL</button>
+        </div>
+    </div>
+</div>
+<!--- END WITHDRAW --->
        
        <!-- FOOTER -->
     <footer>
@@ -302,71 +335,62 @@
        
       <!--- JAVASCRIPT ---->
 <script>
-  //BALANCE SCRIPT
+  // BALANCE SCRIPT
   function updateBalance() {
-      var dropdown = document.getElementById("dropdown1");
-      var balance = dropdown.options[dropdown.selectedIndex].getAttribute("data-balance");
-      document.getElementById("accountBalance").textContent = "$" + balance;
-  }
-
-  function deposit() {
     var dropdown = document.getElementById("dropdown1");
     var selectedOption = dropdown.options[dropdown.selectedIndex];
     var balance = parseFloat(selectedOption.getAttribute("data-balance"));
-    var depositAmount = parseFloat(document.getElementById("amount").value);
-    var newBalance = balance + depositAmount;
+    document.getElementById("accountBalance").textContent = "$" + balance.toFixed(2);
+  }
+
+  function withdraw() {
+    var dropdown = document.getElementById("dropdown1");
+    var selectedOption = dropdown.options[dropdown.selectedIndex];
+    var balance = parseFloat(selectedOption.getAttribute("data-balance"));
+    var withdrawalAmount = parseFloat(document.getElementById("amount").value);
+    var newBalance = balance - withdrawalAmount;
     selectedOption.setAttribute("data-balance", newBalance.toFixed(2));
     updateBalance();
     hideConfirmationPopup();
   }
-    
-  //DEPOSIT SCRIPT 
-// Function to show the deposit confirmation popup
-function showConfirmationPopup() {
-// Get the selected account and deposit amount from the form
-var account = document.getElementById("dropdown1").value;
-var depositAmount = document.getElementById("amount").value;
 
-// Display the deposit amount in the confirmation popup
-document.getElementById("deposit-amount").innerHTML = depositAmount;
+  // WITHDRAW SCRIPT
+  // Function to show the withdrawal confirmation popup
+  function showConfirmationPopup() {
+    // Get the selected account and withdrawal amount from the form
+    var account = document.getElementById("dropdown1").value;
+    var withdrawalAmount = document.getElementById("amount").value;
 
-// Show the deposit confirmation popup
-document.getElementById("deposit-confirmation-popup").style.display = "block";
-}
+    // Display the withdrawal amount in the confirmation popup
+    document.getElementById("withdrawal-amount").innerHTML = withdrawalAmount;
 
-// Function to hide the deposit confirmation popup
-function hideConfirmationPopup() {
-// Hide the deposit confirmation popup
-document.getElementById("deposit-confirmation-popup").style.display = "none";
-}
+    // Show the withdrawal confirmation popup
+    document.getElementById("withdrawal-confirmation-popup").style.display = "block";
+  }
 
-// Function to submit the deposit
-function submitDeposit() {
-// Get the account number, routing number, and check image from the confirmation popup
-var accountNumber = document.getElementById("account-number").value;
-var routingNumber = document.getElementById("routing-number").value;
-var checkImage = document.getElementById("check-image").value;
+  // Function to hide the withdrawal confirmation popup
+  function hideConfirmationPopup() {
+    // Hide the withdrawal confirmation popup
+    document.getElementById("withdrawal-confirmation-popup").style.display = "none";
+  }
 
-// Hide the deposit confirmation popup
-hideConfirmationPopup();
-}
-
-  //LOGIN SCRIPT
+  // LOGIN SCRIPT
   // Get references to the login buttons
-  var modalLoginButton = document.getElementById('modal-login-button');
-  var navbarLoginButton = document.getElementById('navbar-login-button');
+  var modalLoginButton = document.getElementById("modal-login-button");
+  var navbarLoginButton = document.getElementById("navbar-login-button");
 
   // Add an event listener to the modal login button
-  modalLoginButton.addEventListener('click', function() {
+  modalLoginButton.addEventListener("click", function () {
     // Change the text of the navbar login button to "Logout"
     navbarLoginButton.textContent = "Logout";
   });
 
-  navbarLoginButton.addEventListener('click', function() {
-    // Change the text of the navbar login button to "Logout"
+  navbarLoginButton.addEventListener("click", function () {
+    // Change the text of the navbar login button to "Login"
     navbarLoginButton.textContent = "Login";
   });
 </script>
+
       <!-- Bootstrap core JavaScript
          ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->
