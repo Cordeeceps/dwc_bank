@@ -171,7 +171,7 @@
       </div>
 <div class="container-2">
          <div class="form-style-10">
-            <form action="60-contact-us.php" method="post">
+            <form method="post" id="contact-form">
                <h1>Contact Us<span>Please fill out the form below and someone will reach out to you within 1 business day.</span></h1>
             <form>
                <div class="section"><span>1</span>Enter your contact information.</div>
@@ -229,6 +229,16 @@
        
       <!--- JAVASCRIPT ---->
        <script>
+          //FORM SCRIPT
+document.getElementById("contact-form").addEventListener("submit", function(event) {
+  // Prevent the form from submitting
+  event.preventDefault();
+  // Display the popup message
+  alert("Thank you, someone will be in touch with you soon!");
+  // Clear the form
+  document.getElementById("contact-form").reset();
+});
+
         // Get references to the login buttons
         var modalLoginButton = document.getElementById('modal-login-button');
         var navbarLoginButton = document.getElementById('navbar-login-button');
@@ -244,16 +254,6 @@
         navbarLoginButton.textContent = "Login";
         });
        </script>
-      <!-- Bootstrap core JavaScript
-         ================================================== -->
-      <!-- Placed at the end of the document so the pages load faster -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-      <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-      <script src="../../dist/js/bootstrap.min.js"></script>
-      <!-- End container-fluid class -->
-   </body>
-</html>
-      <!-- /.container -->
       <!-- Bootstrap core JavaScript
          ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->
