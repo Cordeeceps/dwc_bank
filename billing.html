@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+      <title>DWC Bank | User Dashboard</title>
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <!-- jQuery library -->
+      <script src="js/jquery.min.js"></script>
+      <!-- Latest compiled JavaScript -->
+      <script src="js/bootstrap.min.js"></script> 
+      <!-- YOUR CUSTOM CSS -->
+      <link href="css/final-project.css" rel="stylesheet">
+      <!-- FONTS -->
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+       
+       <!-- ADD FONT AWESOME ICONS---->
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       <script src="https://kit.fontawesome.com/fff1c5954d.js" crossorigin="anonymous"></script>
+       
+
+<style> 
+    .container-fluid {
+        padding-top: 200px;
+    }   
+    
+    .big-bill-container {
+        background-color: #363444;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 50px;
+    }  
+    
+.bill-container {
+      background-color: #f2f2f2;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 10px;
+      margin-left: 50px;
+      margin-right: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .bill-container i {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+
+    .bill-container .bill-info {
+      flex-grow: 1;
+      margin-left: 10px;
+    }
+
+    .bill-container .bill-info .due-date {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .bill-container .bill-info .bill-desc {
+      font-size: 14px;
+    }
+    
+    .clickable {
+  cursor: pointer;
+}
+
+.bill-container.clickable:hover {
+  background-color: #eee;
+}
+
+/* POPUP STYLES */
+/* Popup window styles */
+.popup {
+  display: none; /* Hide the popup by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.7); /* Black background with opacity */
+}
+
+/* Popup content styles */
+.popup-content {
+  background-color: #363444;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Set the width to 80% of the parent container */
+  max-width: 500px;
+  align-items: center;
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+  position: relative; /* Add position property to enable absolute positioning */
+}
+
+/* Branch dropdown label styles */
+#local-atm-confirmation-popup label {
+  display: block;
+  margin-bottom: 10px;
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* Branch dropdown styles */
+#branch-dropdown {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-family: 'Roboto Mono', monospace;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1; /* Add a background color to the dropdown */
+  margin-bottom: 20px;
+  color: black;
+}
+
+/* Placeholder text for the dropdown */
+#branch-dropdown option[value=""][disabled] {
+  display: none;
+}
+
+#branch-dropdown option {
+  font-size: 16px;
+  font-family: 'Roboto Mono', monospace;
+  color: black;
+}
+
+/* Styling the arrow icon */
+.select-arrow {
+  position: absolute;
+  right: 10px;
+  top: 14px;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  background-color: white;
+  transform: rotate(45deg);
+}
+
+.select-arrow:before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -7px;
+  width: 16px;
+  height: 16px;
+  background-color: inherit;
+  transform: rotate(-45deg);
+}
+
+/* Submit and cancel button styles */
+.popup-content button {
+  width: 40%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  font-family: 'Roboto Mono', monospace;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.popup-content button:hover {
+  background-color: floralwhite;
+}
+
+/* Center the buttons */
+.popup-content div {
+  display: flex;
+  justify-content: center;
+}
+
+/* Add margin between the branch dropdown and buttons */
+.popup-content #branch-dropdown {
+  margin-bottom: 30px;
+}
+    
+.popup-content input[type=text], 
+.popup-content input[type=file] {
+  color: black;
+}
+</style>
+    
+    </head>
+      <!-- NAVBAR ================================================== -->
+   <body>
+      <div class="navbar-wrapper">
+         <div class="container">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+               <div class="container">
+                  <div class="navbar-header">
+                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                     <span class="sr-only">Toggle navigation</span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     </button>
+                     <a style="color: #fff" class="navbar-brand" href="/index.html"><h6>DWC Bank</h6></a>
+                  </div>
+                  <div id="navbar" class="navbar-collapse collapse">
+                     <ul class="nav navbar-nav">
+                        <li><a style="color: #fff" href="/about-us.html">About Us</a></li>
+                        <li><a style="color: #fff" href="/services.html">Services</a></li>
+                        <li><a style="color: #fff" href="/contact-us.html">Contact</a></li>
+                        <li class="dropdown">
+                           <a style="color: #fff" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dashboard <span class="caret"></span></a>
+                           <ul class="dropdown-menu">
+                              <li><a style="color: #fff" href="/dashboard.html">User Dashboard</a></li>
+                               <li><a style="color: #fff" href="/deposit.html">Deposit</a></li>
+                               <li><a style="color: #fff" href="/withdraw.html">Withdraw</a></li>
+                               <li><a style="color: #fff" href="/transfer.html">Transfer</a></li>
+                               <li><a style="color: #fff" href="/billing.html">Billing</a></li>
+                               <li><a style="color: #fff" href="/accounts.html">Accounts</a></li>
+                               <li><a style="color: #fff" href="/profile.html">Profile</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                     <ul class="nav navbar-nav navbar-right">
+                        <li><a id="navbar-login-button" style="color: #fff" href="#"><h7>Login</h7></a></li>
+                     </ul>
+                  </div>
+               </div>
+            </nav>
+         </div>
+      </div>
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+       
+<!--- BILLING CONTAINERS --->
+<div class="container-fluid">
+    <div class="big-bill-container">
+    <h1>Online Billing</h1>
+    <h6>select a bill to pay</h6><br><br>
+    <div class="row">
+      <div class="col">
+        <div class="bill-container clickable">
+          <i class="fas fa-check-circle text-success"></i>
+          <div class="bill-info">
+            <div class="due-date">Paid on April 30th, 2023</div>
+            <div class="bill-desc text-success">Rent - Housing Group Inc - $1,200.00</div>
+          </div>
+        </div>
+        <div class="bill-container clickable">
+          <i class="fas fa-clock text-warning"></i>
+          <div class="bill-info">
+            <div class="due-date">Overdue since April 1, 2023</div>
+            <div class="bill-desc">Electricity bill - Power Corp - $100.00</div>
+          </div>
+        </div>
+        <div class="bill-container clickable">
+          <i class="fas fa-file-invoice-dollar"></i>
+          <div class="bill-info">
+            <div class="due-date">Due on May 7, 2023</div>
+            <div class="bill-desc">Credit card bill - DWC Bank - $500.00</div>
+          </div>
+        </div>
+                  <div class="bill-container clickable">
+          <i class="fas fa-file-invoice-dollar"></i>
+          <div class="bill-info">
+            <div class="due-date">Due on May 20, 2023</div>
+            <div class="bill-desc">Phone bill - Veriphone - $150.00</div>
+          </div>
+        </div>
+                  <div class="bill-container clickable">
+          <i class="fas fa-file-invoice-dollar"></i>
+          <div class="bill-info">
+            <div class="due-date">Due on August 1, 2023</div>
+            <div class="bill-desc">Tuition - ECSU - $5,000.00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+       </div>
+       
+<!-- Billing confirmation popup -->
+<div id="billing-confirmation-popup" class="popup">
+    <div class="popup-content">
+        <h2 style="margin-bottom:20px;">Pay Bill</h2>
+        <p style="color:white; font-size: 18px; font-family: 'Roboto Mono', monospace;">Bill: <br>BILL NAME HERE</p>
+        <p style="color:white; font-size: 18px; font-family: 'Roboto Mono', monospace;">Amount: <br>BILL AMOUNT HERE</p>
+        <label class="form-label">Account</label>
+                    <select class="form-control">
+                        <option value="checking" data-balance="1200.50">Checking ...3821</option>
+                        <option value="savings" data-balance="3000.00">Savings ...5748</option>
+                        <option value="bitcoin" data-balance="20,201.21">Bitcoin ...1337</option>
+                    </select>
+        <br>
+        <div class="form-group">
+                    <label class="form-label" for="amount">Amount to Pay</label>
+                    <input class="form-control" type="text" id="amount" placeholder="$0.00">
+                </div>
+        <button onclick="payBill()">Submit</button>
+        <button onclick="hideConfirmationPopup()">Cancel</button>
+    </div>
+</div>
+<!--- END BILLING --->
+       
+       <!-- FOOTER -->
+    <footer>
+         <div class="footer">
+        
+    <div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h3 style="color: white">Contact Us</h3>Please <a style="color: white" href="/contact-us.html">click here</a> to get in touch with us about suggestions, comments, or collaboration ideas!
+        </div>
+        <div class="col-md-4 text-center">
+             <!--- SOCIAL ICONS ---->
+            <a href="https://www.pinterest.com/cordeeceps/_saved/" class="fa fa-pinterest fa-lg" target="_blank"></a>
+            <a href="https://www.facebook.com/Meghan.Bothoff.Shanahan/" class="fa fa-facebook fa-lg" target="_blank"></a>
+            <a href="https://twitter.com/Cordeeceps" class="fa fa-twitter fa-lg" target="_blank"></a>
+            <a href="https://www.instagram.com/cordeeceps/" class="fa fa-instagram fa-lg" target="_blank"></a>
+            <a href="https://www.deviantart.com/cordeeceps" class="fa fa-deviantart fa-lg" target="_blank"></a>
+            <a href="https://toyhou.se/Scientist" class="fa fa-book fa-lg" target="_blank"></a>
+            <!---END SOCIAL ICONS --->
+        </div>
+        <div class="col-md-4" style="text-align: right">
+            <h4>Credits</h4>All images are from Unsplash. Website coded by TTE (Team Tax Evasion). All rights reserved.
+        </div>
+                </div>
+           </div>
+         </div>
+      </footer>
+      <!-- /.container -->
+      <!--- JAVASCRIPT ---->
+       <script> 
+//BILLING SCRIPT
+// Keep a reference to the selected billing container
+let selectedBillingContainer = null;
+
+// Get all billing containers
+const billingContainers = document.querySelectorAll('.bill-container');
+
+// Add event listener to each billing container
+billingContainers.forEach(billingContainer => {
+  billingContainer.addEventListener('click', () => {
+    // Deselect the previously selected container (if any)
+    if (selectedBillingContainer) {
+      selectedBillingContainer.classList.remove('selected');
+    }
+
+    // Select the current billing container
+    billingContainer.classList.add('selected');
+    selectedBillingContainer = billingContainer;
+
+    // Get bill name and amount from the selected billing container
+    const billDescElement = selectedBillingContainer.querySelector('.bill-desc');
+const billName = billDescElement.textContent;
+billDescElement.classList.add('text-success');
+    const billAmount = billName.split(' - ')[1];
+
+    // Populate the billing confirmation popup window with bill details
+    const billNameElement = document.querySelector('#billing-confirmation-popup p:nth-child(2)');
+    const billAmountElement = document.querySelector('#billing-confirmation-popup p:nth-child(3)');
+    billNameElement.textContent = `Bill: ${billName}`;
+    billAmountElement.textContent = `Amount: ${billAmount}`;
+
+    // Show the billing confirmation popup window
+    const billingConfirmationPopup = document.querySelector('#billing-confirmation-popup');
+    billingConfirmationPopup.style.display = 'block';
+  });
+});
+
+// Function to handle payment submission
+function payBill() {
+  // Update the selected billing container to show that the bill has been paid
+  if (selectedBillingContainer) {
+    // Get the bill name from the selected billing container
+    const billName = selectedBillingContainer.querySelector('.bill-desc').textContent;
+
+    // Get the amount to pay from the input field in the confirmation popup
+    const amountToPay = document.querySelector('#billing-confirmation-popup #amount').value;
+
+    // Change the icon to a checkmark and update the text style
+    const iconElement = selectedBillingContainer.querySelector('i');
+    iconElement.classList.remove('fa-file-invoice-dollar', 'fa-clock', 'text-warning');
+    iconElement.classList.add('fa-check-circle', 'text-success');
+
+    // Change the "due date" text to "Paid"
+    const dueDateElement = selectedBillingContainer.querySelector('.due-date');
+    dueDateElement.textContent = 'Paid on May 1st, 2023';
+
+    // Hide the billing confirmation popup window
+    const billingConfirmationPopup = document.querySelector('#billing-confirmation-popup');
+    billingConfirmationPopup.style.display = 'none';
+
+    // Display a success message
+    alert(`You have successfully paid the bill "${billName}" for ${amountToPay}.`);
+  }
+}
+
+// Function to hide the billing confirmation popup window
+function hideConfirmationPopup() {
+  const billingConfirmationPopup = document.querySelector('#billing-confirmation-popup');
+  billingConfirmationPopup.style.display = 'none';
+  // Deselect the selected container
+  selectedBillingContainer.classList.remove('selected');
+  // Reset the selected container variable
+  selectedBillingContainer = null;
+}
+
+           
+//LOGIN SCRIPT
+        // Get references to the login buttons
+        var modalLoginButton = document.getElementById('modal-login-button');
+        var navbarLoginButton = document.getElementById('navbar-login-button');
+
+        // Add an event listener to the modal login button
+        modalLoginButton.addEventListener('click', function() {
+        // Change the text of the navbar login button to "Logout"
+        navbarLoginButton.textContent = "Logout";
+        });
+           
+        navbarLoginButton.addEventListener('click', function() {
+        // Change the text of the navbar login button to "Logout"
+        navbarLoginButton.textContent = "Login";
+        });
+       </script>
+      <!-- Bootstrap core JavaScript
+         ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+      <script src="../../dist/js/bootstrap.min.js"></script>
+      <!-- End container-fluid class -->
+   </body>
+</html>
