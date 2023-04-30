@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+      <title>DWC Bank | User Profile</title>
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <!-- jQuery library -->
+      <script src="js/jquery.min.js"></script>
+      <!-- Latest compiled JavaScript -->
+      <script src="js/bootstrap.min.js"></script> 
+      <!-- YOUR CUSTOM CSS -->
+      <link href="css/final-project.css" rel="stylesheet">
+      <!-- FONTS -->
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+       
+       <!-- ADD FONT AWESOME ICONS---->
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       <script src="https://kit.fontawesome.com/fff1c5954d.js" crossorigin="anonymous"></script>
+       
+       
+   <style>
+.text-side {
+  overflow: auto;
+  height: 100vh;
+  background-color: rgba(30, 28, 42, 1);
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px;
+}
+
+
+.text-main {
+  flex: 1;
+  padding: 0;
+  margin: 0;
+}
+
+.image-side {
+  height: 100vh;
+   background-color: rgba(30, 28, 42, 0.9);
+  background-size: cover;
+  margin-left: -15px; /* This is to remove the space between the two sides */
+  margin-right: -15px; /* This is to remove the space between the two sides */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-info {
+  text-align: center;
+  margin-top: -200px;
+  
+}
+
+.user-info i {
+  font-size: 30rem;
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+}
+       
+.user-info h2,
+.user-info p {
+  color: white;
+  text-align: center;
+}
+       
+.user-info h6 {
+  font-size: 20px; /* adjust the value to your preference */
+}
+       
+@media screen and (max-width: 768px) {
+  .text-side {
+    height: auto;
+    padding: 20px;
+  }
+}
+
+.container-fluid {
+  margin-top: 50px; /* Adjust the value based on navbar height */
+  margin-bottom: 90px;
+}
+
+   </style>
+    
+    </head>
+    <!-- NAVBAR ================================================== -->
+   <body>
+      <div class="navbar-wrapper">
+         <div class="container">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+               <div class="container">
+                  <div class="navbar-header">
+                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                     <span class="sr-only">Toggle navigation</span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     </button>
+                     <a style="color: #fff" class="navbar-brand" href="/index.html"><h6>DWC Bank</h6></a>
+                  </div>
+                  <div id="navbar" class="navbar-collapse collapse">
+                     <ul class="nav navbar-nav">
+                        <li class="active"><a style="color: #fff" href="/about-us.html">About Us</a></li>
+                        <li><a style="color: #fff" href="/services.html">Services</a></li>
+                        <li><a style="color: #fff" href="/contact-us.html">Contact</a></li>
+                        <li class="dropdown">
+                           <a style="color: #fff" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dashboard <span class="caret"></span></a>
+                           <ul class="dropdown-menu">
+                              <li><a style="color: #fff" href="/deposit.html">Deposit</a></li>
+                               <li><a style="color: #fff" href="/withdraw.html">Withdraw</a></li>
+                               <li><a style="color: #fff" href="/transfer.html">Transfer</a></li>
+                               <li><a style="color: #fff" href="/billing.html">Billing</a></li>
+                               <li><a style="color: #fff" href="/accounts.html">Accounts</a></li>
+                               <li><a style="color: #fff" href="/profile.html">Profile</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                     <ul class="nav navbar-nav navbar-right">
+                        <li><a id="navbar-login-button" style="color: #fff" href="#"><h7>Login</h7></a></li>
+                     </ul>
+                  </div>
+               </div>
+            </nav>
+         </div>
+      </div>
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+ <!-- USER PROFILE -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 text-side">
+      <form>
+      <h8>Contact Information</h8>
+        <div class="form-group">
+          <label for="name">Full Name:</label>
+          <input type="text" class="form-control" id="fname">
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone:</label>
+          <input type="tel" class="form-control" id="phone">
+        </div>
+                            <div class="form-group">
+          <label for="name">Street Address:</label>
+          <input type="text" class="form-control" id="street">
+        </div>
+                            <div class="form-group">
+          <label for="name">City:</label>
+          <input type="text" class="form-control" id="city">
+        </div>
+                            <div class="form-group">
+          <label for="name">State:</label>
+          <input type="text" class="form-control" id="state">
+        </div>
+                            <div class="form-group">
+          <label for="name">Post/Zip Code:</label>
+          <input type="text" class="form-control" id="zip">
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+        
+      <form>
+          <br>
+      <h8>Account Information</h8>
+        <div class="form-group">
+          <label for="name">Username:</label>
+          <input type="text" class="form-control" id="uname">
+        </div>
+          <div class="form-group">
+          <label for="phone">Current Password:</label>
+          <input type="password" class="form-control" id="password">
+        </div>
+                    <div class="form-group">
+          <label for="phone">New Password:</label>
+          <input type="password" class="form-control" id="npassword">
+        </div>
+        <button type="submit">Change Password</button>
+      </form>
+
+    </div>
+    <div class="col-md-6 image-side">
+      <div class="user-info">
+        <h1>User Profile</h1>
+        <i class="fa-solid fa-circle-user"></i>
+         <h2>William Holmes</h2>
+        <h6>Member Since: April 4, 2023</h6>
+        <h6>Total Assets: $231,045.50</h6>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END USER PROFILE -->     
+       
+ <!-- FOOTER -->
+      <footer>
+         <div class="footer">
+        
+    <div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h3 style="color: white">Contact Us</h3>Please <a style="color: white" href="/contact-us.html">click here</a> to get in touch with us about suggestions, comments, or collaboration ideas!
+        </div>
+        <div class="col-md-4 text-center">
+             <!--- SOCIAL ICONS ---->
+            <a href="https://www.pinterest.com/cordeeceps/_saved/" class="fa fa-pinterest fa-lg" target="_blank"></a>
+            <a href="https://www.facebook.com/Meghan.Bothoff.Shanahan/" class="fa fa-facebook fa-lg" target="_blank"></a>
+            <a href="https://twitter.com/Cordeeceps" class="fa fa-twitter fa-lg" target="_blank"></a>
+            <a href="https://www.instagram.com/cordeeceps/" class="fa fa-instagram fa-lg" target="_blank"></a>
+            <a href="https://www.deviantart.com/cordeeceps" class="fa fa-deviantart fa-lg" target="_blank"></a>
+            <a href="https://toyhou.se/Scientist" class="fa fa-book fa-lg" target="_blank"></a>
+            <!---END SOCIAL ICONS --->
+        </div>
+        <div class="col-md-4" style="text-align: right">
+            <h4>Credits</h4>All images are from Unsplash. Website coded by TTE (Team Tax Evasion). All rights reserved.
+        </div>
+                </div>
+           </div>
+         </div>
+      </footer>
+      <!-- /.container -->
+      <!--- JAVASCRIPT ---->
+       <script>
+//FORM SCRIPT 
+// Get references to the form fields
+const fnameInput = document.getElementById('fname');
+const emailInput = document.getElementById('email');
+const phoneInput = document.getElementById('phone');
+const streetInput = document.getElementById('street');
+const cityInput = document.getElementById('city');
+const stateInput = document.getElementById('state');
+const zipInput = document.getElementById('zip');
+const unameInput = document.getElementById('uname');
+const passwordInput = document.getElementById('password');
+const npasswordInput = document.getElementById('npassword');
+
+// Set default values for the form fields
+fnameInput.value = 'William Holmes';
+emailInput.value = 'sherlock@bbc.com';
+phoneInput.value = '555-123-4567';
+streetInput.value = '221B Baker Street';
+cityInput.value = 'London';
+stateInput.value = 'UK';
+zipInput.value = 'EC3N';
+unameInput.value = 'sherlock';
+passwordInput.value = 'password';
+npasswordInput.value = '';
+
+// Get a reference to the submit button
+const submitButton = document.querySelector('button[type="submit"]');
+
+// Add an event listener to the submit button
+submitButton.addEventListener('click', function(event) {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+
+  // Show a popup message
+  alert('Your changes have been saved!');
+});
+
+// Get a reference to the password change form
+const passwordChangeForm = document.querySelectorAll('form')[1];
+
+// Get a reference to the password change button
+const passwordChangeButton = passwordChangeForm.querySelector('button[type="submit"]');
+
+// Add an event listener to the password change button
+passwordChangeButton.addEventListener('click', function(event) {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+
+  // Check if the new password field is not empty
+  if (npasswordInput.value.trim() !== '') {
+    // Show a popup message
+    alert('Your password has been updated!');
+    }
+  });
+
+        // Get references to the login buttons
+        var modalLoginButton = document.getElementById('modal-login-button');
+        var navbarLoginButton = document.getElementById('navbar-login-button');
+
+        // Add an event listener to the modal login button
+        modalLoginButton.addEventListener('click', function() {
+        // Change the text of the navbar login button to "Logout"
+        navbarLoginButton.textContent = "Logout";
+        });
+           
+        navbarLoginButton.addEventListener('click', function() {
+        // Change the text of the navbar login button to "Logout"
+        navbarLoginButton.textContent = "Login";
+        });
+       </script>
+      <!-- Bootstrap core JavaScript
+         ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+      <script src="../../dist/js/bootstrap.min.js"></script>
+      <!-- End container-fluid class -->
+   </body>
+</html>
