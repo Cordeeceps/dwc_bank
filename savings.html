@@ -260,44 +260,38 @@
 <!--- BILLING CONTAINERS --->
 <div class="container-fluid">
     <div class="big-bill-container">
-    <h1>Online Billing</h1>
-    <h6>select a bill to pay</h6><br><br>
+    <h1>Account Transactions</h1>
+    <h6>savings account ending in ...5748</h6><br><br>
     <div class="row">
       <div class="col">
-        <div class="bill-container clickable">
-          <i class="fas fa-check-circle text-success"></i>
+        <div class="bill-container">
+          <i class="fa-solid fa-check text-success"></i>
           <div class="bill-info">
-            <div class="due-date">Paid on April 30th, 2023</div>
-            <div class="bill-desc text-success">Rent - Housing Group Inc - $1,200.00</div>
+            <div class="due-date">May 1st, 2023</div>
+            <div class="bill-desc text-success">Transfer - Checking ...3821 -  +$200.00</div>
           </div>
         </div>
-        <div class="bill-container clickable">
-          <i class="fas fa-clock text-warning"></i>
+        <div class="bill-container">
+          <i class="fa-solid fa-check text-success"></i>
           <div class="bill-info">
-            <div class="due-date">Overdue since April 1, 2023</div>
-            <div class="bill-desc">Electricity bill - Power Corp - $100.00</div>
+            <div class="due-date">May 1st, 2023</div>
+            <div class="bill-desc">Transfer - Other user's account ...1234 - $500.00</div>
           </div>
         </div>
-        <div class="bill-container clickable">
-          <i class="fas fa-file-invoice-dollar"></i>
+        <div class="bill-container">
+          <i class="fa-solid fa-check text-success"></i>
           <div class="bill-info">
-            <div class="due-date">Due on May 7, 2023</div>
-            <div class="bill-desc">Credit card bill - DWC Bank - $500.00</div>
+            <div class="due-date">April 15th, 2023</div>
+            <div class="bill-desc text-success">Deposit - Direct Deposit - Work - +$150.00</div>
           </div>
         </div>
-                  <div class="bill-container clickable">
-          <i class="fas fa-file-invoice-dollar"></i>
+        <div class="bill-container">
+          <i class="fa-solid fa-check text-success"></i>
           <div class="bill-info">
-            <div class="due-date">Due on May 20, 2023</div>
-            <div class="bill-desc">Phone bill - Veriphone - $150.00</div>
+            <div class="due-date">April 15th, 2023</div>
+            <div class="bill-desc text-success">Transfer - Direct Deposit - Work - +$150.00</div>
           </div>
         </div>
-                  <div class="bill-container clickable">
-          <i class="fas fa-file-invoice-dollar"></i>
-          <div class="bill-info">
-            <div class="due-date">Due on August 1, 2023</div>
-            <div class="bill-desc">Tuition - ECSU - $5,000.00</div>
-          </div>
         </div>
       </div>
     </div>
@@ -355,81 +349,7 @@
       </footer>
       <!-- /.container -->
       <!--- JAVASCRIPT ---->
-       <script> 
-//BILLING SCRIPT
-// Keep a reference to the selected billing container
-let selectedBillingContainer = null;
-
-// Get all billing containers
-const billingContainers = document.querySelectorAll('.bill-container');
-
-// Add event listener to each billing container
-billingContainers.forEach(billingContainer => {
-  billingContainer.addEventListener('click', () => {
-    // Deselect the previously selected container (if any)
-    if (selectedBillingContainer) {
-      selectedBillingContainer.classList.remove('selected');
-    }
-
-    // Select the current billing container
-    billingContainer.classList.add('selected');
-    selectedBillingContainer = billingContainer;
-
-    // Get bill name and amount from the selected billing container
-    const billDescElement = selectedBillingContainer.querySelector('.bill-desc');
-const billName = billDescElement.textContent;
-billDescElement.classList.add('text-success');
-    const billAmount = billName.split(' - ')[1];
-
-    // Populate the billing confirmation popup window with bill details
-    const billNameElement = document.querySelector('#billing-confirmation-popup p:nth-child(2)');
-    const billAmountElement = document.querySelector('#billing-confirmation-popup p:nth-child(3)');
-    billNameElement.textContent = `Bill: ${billName}`;
-    billAmountElement.textContent = `Amount: ${billAmount}`;
-
-    // Show the billing confirmation popup window
-    const billingConfirmationPopup = document.querySelector('#billing-confirmation-popup');
-    billingConfirmationPopup.style.display = 'block';
-  });
-});
-
-// Function to handle payment submission
-function payBill() {
-  // Update the selected billing container to show that the bill has been paid
-  if (selectedBillingContainer) {
-    // Get the bill name from the selected billing container
-    const billName = selectedBillingContainer.querySelector('.bill-desc').textContent;
-
-    // Get the amount to pay from the input field in the confirmation popup
-    const amountToPay = document.querySelector('#billing-confirmation-popup #amount').value;
-
-    // Change the icon to a checkmark and update the text style
-    const iconElement = selectedBillingContainer.querySelector('i');
-    iconElement.classList.remove('fa-file-invoice-dollar', 'fa-clock', 'text-warning');
-    iconElement.classList.add('fa-check-circle', 'text-success');
-
-    // Change the "due date" text to "Paid"
-    const dueDateElement = selectedBillingContainer.querySelector('.due-date');
-    dueDateElement.textContent = 'Paid on May 1st, 2023';
-
-    // Hide the billing confirmation popup window
-    const billingConfirmationPopup = document.querySelector('#billing-confirmation-popup');
-    billingConfirmationPopup.style.display = 'none';
-
-    // Display a success message
-    alert(`You have successfully paid the bill "${billName}" for ${amountToPay}.`);
-  }
-}
-
-// Function to hide the billing confirmation popup window
-function hideConfirmationPopup() {
-  const billingConfirmationPopup = document.querySelector('#billing-confirmation-popup');
-  billingConfirmationPopup.style.display = 'none';
-  // Deselect the selected container
-  selectedBillingContainer.classList.remove('selected');
-  // Reset the selected container variable
-  selectedBillingContainer = null;
-}
+       <script>
 
            
 //LOGIN SCRIPT
