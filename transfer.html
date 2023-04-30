@@ -296,7 +296,7 @@
                         </li>
                      </ul>
                      <ul class="nav navbar-nav navbar-right">
-                        <li><a id="navbar-login-button" style="color: #fff" href="#"><h7>Login</h7></a></li>
+                        <li><a id="navbar-login-button" style="color: #fff" href="#"><h7>Logout</h7></a></li>
                      </ul>
                   </div>
                </div>
@@ -330,7 +330,7 @@
     <select class="form-control" id="dropdown2" onchange="updateBalance(); updateBalance('dropdown3');">
         <option selected disabled>Where would you like to send money?</option>
         <option value="local-atm">One of my accounts</option>
-        <option value="delivery 5  ">To someone else's account</option>
+        <option value="delivery">To someone else's account</option>
     </select>
 </div>
                 <div class="form-group">
@@ -362,7 +362,7 @@
         </div>
         <p style="color:white; font-size: 18px; font-family: 'Roboto Mono', monospace;">Account Balance:</p>
         <div class="form-group">
-            <span style="color:white; font-size: 20px; font-family: Orbitron, sans-serif;" id="local-atm-account-balance"> </span>
+            <span style="color:white; font-size: 20px; font-family: Orbitron, sans-serif;" id="local-atm-account-balance">ACCOUNT BALANCE HERE</span>
         </div>
         <div style="text-align: center;">
             <button type="button" onclick="addToAccountBalance('dropdown3')">SUBMIT</button>
@@ -576,6 +576,24 @@ function withdrawFromLocalATM() {
   // Hide the popup and show a success message
   hideConfirmationPopup();
   alert("Your transfer of $" + withdrawalAmount.toFixed(2) + " to your " + account + " account has been processed.");
+}
+
+// Function to withdraw money for delivery
+function withdrawForDelivery() {
+  // Get the selected account and withdrawal amount from the form
+  var account = document.getElementById("dropdown1").value;
+  var withdrawalAmount = parseFloat(document.getElementById("amount").value);
+  var pickupAddress = document.getElementById("pickupAddress").value;
+
+  // Update the account balance
+  var selectedOption = document.querySelector("#dropdown1 option:checked");
+  var balance = parseFloat(selectedOption.getAttribute("data-balance"));
+  var newBalance = balance - withdrawalAmount;
+  selectedOption.setAttribute("data-balance", newBalance.toFixed(2));
+  updateBalance();
+
+  // Hide the confirmation popup
+  hideConfirmationPopup();
 }
 
   // Function to show/hide target input fields based on the selected option in dropdown2

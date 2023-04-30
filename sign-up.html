@@ -5,7 +5,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-      <title>DWC Bank | Contact Us</title>
+      <title>DWC Bank | Sign Up</title>
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <!-- jQuery library -->
@@ -36,6 +36,9 @@
 	background: #4D5157;
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+	position: relative;
+	top: 50px;
+    padding-bottom: 100px;
 }
 
 .form-style-10 .inner-wrap {
@@ -59,7 +62,7 @@
 .form-style-10 h1>span {
 	display: block;
 	margin-top: 2px;
-	font: 13px Arial, Helvetica, sans-serif;
+	font: 15px Arial, Helvetica, sans-serif;
 }
 
 .form-style-10 label {
@@ -119,7 +122,44 @@
 	border: 1px solid #bbe88f;
 	font-size: 15px;
 }
+       
+.form-style-10 input[type="checkbox"] + label {
+  font-size: 21px;
+  font-family: 'Roboto Mono', monospace;
+  color: #fff;
+}
+       
+       /* Change Label Color */
+.inner-wrap label {
+  color: #fff;
+  font-family: 'Roboto Mono', monospace;
+}
 
+/* POPUP CSS */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 9999;
+}
+
+.popup-content {
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 20px;
+}
+
+#close-popup {
+  display: block;
+  margin: 0 auto;
+}
        </style>
    </head>
     <!-- NAVBAR ================================================== -->
@@ -156,7 +196,7 @@
                         </li>
                      </ul>
                      <ul class="nav navbar-nav navbar-right">
-                        <li><a id="navbar-login-button" style="color: #fff" href="#"><h7>Login</h7></a></li>
+                        <li><a id="navbar-login-button" style="color: #fff" href="#"><h7>Logout</h7></a></li>
                      </ul>
                   </div>
                </div>
@@ -165,24 +205,22 @@
       </div>
 <div class="container">
          <div class="form-style-10">
-            <form action="60-contact-us.php" method="post">
-               <h1>Contact Us<span>Please fill out the form below and someone will reach out to you within 1 business day.</span></h1>
+            <form method="post" id="">
+               <h1>Apply for an Account<span><br>Please fill out the form below and someone will reach out to you with a decision within 3 business days.</span></h1>
             <form>
-               <div class="section"><span>1</span>Would you like to see this concept site become a fully developed recipe repository someday?</div>
+               <div class="section"><span>1</span>Are you over the age of 18?</div>
                <div class="inner-wrap">
                   <label><input type="radio" value="yes" name="site" id="site"> Yes</label>
                   <label><input type="radio" value="no" name="site" id="site"> No</label>
                </div>
-               <div class="section"><span>2</span>What kind of recipes are you interested in?</div>
-               <div class="inner-wrap">
-                  <input type="checkbox" value="healthy" name="site[]" id="site[]"> Healthy Recipes<br> 
-                  <input type="checkbox" value="vegetarian" name="site[]" id="site[]"> Vegetarian Recipes<br>
-                  <input type="checkbox" value="comfort" name="site[]" id="site[]"> Comfort Food<br>
-                  <input type="checkbox" value="ethnic" name="site[]" id="site[]"> Authentic Ethnic Recipes<br>
-                  <input type="checkbox" value="dessert" name="site[]" id="site[]"> Desserts<br>
-                  <input type="checkbox" value="anything" name="site[]" id="site[]"> Any New Recipes<br>
+               <div class="section"><span>2</span>What kind of account(s) are you interested in opening?</div>
+               <div class="inner-wrap" style="color: white">
+                  <input type="checkbox" value="checking" name="site[]" id="site[]" style="font font-family: 'Roboto Mono', monospace"> Checking<br> 
+                  <input type="checkbox" value="savings" name="site[]" id="site[]"> Savings<br>
+                  <input type="checkbox" value="credit" name="site[]" id="site[]"> Credit Card<br>
+                  <input type="checkbox" value="crypto" name="site[]" id="site[]"> Cryptocurrency<br>
                </div>
-               <div class="section"><span>3</span>Sign up to get new recipes right in your inbox! (Not Really)</div>
+               <div class="section"><span>3</span>Please provide your contact information.</div>
                <div class="inner-wrap">
                   <label for="email">Email address:</label>
                   <input type="email" name="email" id="email"><br>
@@ -190,12 +228,27 @@
                   <input type="text" size="12" maxlength="12" name="fName" id="fName"><br>
                   <label for="lastName">Last Name:</label>
                   <input type="text" name="lName" id="lName"><br>
+                   <label for="Phone">Phone:</label>
+                  <input type="text" name="phone" id="phone"><br>
+                   <label for="lastName">Street Address:</label>
+                  <input type="text" name="street" id="street"><br>
+                   <label for="lastName">City:</label>
+                  <input type="text" name="city" id="city"><br>
+                   <label for="lastName">State:</label>
+                  <input type="text" name="state" id="state"><br>
+                   <label for="lastName">Zip Code:</label>
+                  <input type="text" name="zip" id="zip"><br>
+               </div>
+                               <div class="section"><span>4</span>Choose a username and password.</div>
+               <div class="inner-wrap">
+                  <label for="username">Username:</label>
+                  <input type="text" name="username" id="username"><br>
                   <label for="password">Password:</label>
                   <input type="password" size="12" maxlength="12" id="passwd" name="passwd"><br>
                </div>
-               <div class="section"><span>4</span>Feedback</div>
+               <div class="section"><span>4</span>Additional Comments</div>
                <div class="inner-wrap">
-                  <textarea rows="10" cols="50" name="comments" wrap="physical" placeholder="Enter your comments here" id="comments"></textarea><br><br>
+                  <textarea rows="10" cols="50" name="comments" wrap="physical" placeholder="Please provide any additional information you want to include in your application here." id="comments"></textarea><br><br>
                </div>
                <div class="section">
                   <button type="submit" name="submit">Submit Form</button>
@@ -205,6 +258,14 @@
       </div>
     </div>
 
+</div>
+       
+<!-- POPUP --> 
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <p>Thank you for your application! Someone will contact you soon with next steps.</p>
+    <button id="close-popup">OK</button>
+  </div>
 </div>
        
 <!-- FOOTER -->
@@ -237,6 +298,26 @@
        
       <!--- JAVASCRIPT ---->
        <script>
+        //POPUP 
+        const form = document.querySelector('form');
+const popup = document.getElementById('popup');
+const closePopup = document.getElementById('close-popup');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault(); // prevent form submission
+  
+  // show popup
+  popup.style.display = 'block';
+
+  // clear form
+  form.reset();
+});
+
+closePopup.addEventListener('click', () => {
+  // hide popup
+  popup.style.display = 'none';
+});
+        // LOGIN SCRIPT
         // Get references to the login buttons
         var modalLoginButton = document.getElementById('modal-login-button');
         var navbarLoginButton = document.getElementById('navbar-login-button');
@@ -252,16 +333,6 @@
         navbarLoginButton.textContent = "Login";
         });
        </script>
-      <!-- Bootstrap core JavaScript
-         ================================================== -->
-      <!-- Placed at the end of the document so the pages load faster -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-      <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-      <script src="../../dist/js/bootstrap.min.js"></script>
-      <!-- End container-fluid class -->
-   </body>
-</html>
-      <!-- /.container -->
       <!-- Bootstrap core JavaScript
          ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->
