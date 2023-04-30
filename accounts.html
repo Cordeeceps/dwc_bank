@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+      <title>DWC Bank | User Dashboard</title>
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <!-- jQuery library -->
+      <script src="js/jquery.min.js"></script>
+      <!-- Latest compiled JavaScript -->
+      <script src="js/bootstrap.min.js"></script> 
+      <!-- YOUR CUSTOM CSS -->
+      <link href="css/final-project.css" rel="stylesheet">
+      <!-- FONTS -->
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+       
+       <!-- ADD FONT AWESOME ICONS---->
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       <script src="https://kit.fontawesome.com/fff1c5954d.js" crossorigin="anonymous"></script>
+       
+
+<style> 
+    .container-fluid {
+        padding-top: 200px;
+    }   
+    
+    .big-bill-container {
+        background-color: #363444;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 50px;
+    }  
+    
+.bill-container {
+      background-color: #4C4A5B;
+      border: 1px solid #5F5D6D;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 10px;
+      margin-left: 10px;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    color: white; 
+    }
+
+    .bill-container i {
+      font-size: 36px;
+      margin-right: 10px;
+    }
+
+    .bill-container .bill-info {
+      flex-grow: 1;
+      margin-left: 10px;
+    }
+
+    .bill-container .bill-info .due-date {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .bill-container .bill-info .bill-desc {
+      font-size: 14px;
+    }
+    
+    .clickable {
+  cursor: pointer;
+}
+
+.bill-container.clickable:hover {
+  background-color: #5F5D6D;
+}
+    
+.bill-container .bill-info .bill-desc {
+  font-size: 25px;
+  font-family: 'Roboto Mono', monospace;
+}
+    
+    .bill-container .bill-info .due-date {
+  font-size: 20px;
+  margin-bottom: 5px;
+  font-family: 'Orbitron', sans-serif;
+  color: #bbe88f; 
+}
+</style>
+    
+    </head>
+      <!-- NAVBAR ================================================== -->
+   <body>
+      <div class="navbar-wrapper">
+         <div class="container">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+               <div class="container">
+                  <div class="navbar-header">
+                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                     <span class="sr-only">Toggle navigation</span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     </button>
+                     <a style="color: #fff" class="navbar-brand" href="/index.html"><h6>DWC Bank</h6></a>
+                  </div>
+                  <div id="navbar" class="navbar-collapse collapse">
+                     <ul class="nav navbar-nav">
+                        <li><a style="color: #fff" href="/about-us.html">About Us</a></li>
+                        <li><a style="color: #fff" href="/services.html">Services</a></li>
+                        <li><a style="color: #fff" href="/contact-us.html">Contact</a></li>
+                        <li class="dropdown">
+                           <a style="color: #fff" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dashboard <span class="caret"></span></a>
+                           <ul class="dropdown-menu">
+                              <li><a style="color: #fff" href="/dashboard.html">User Dashboard</a></li>
+                               <li><a style="color: #fff" href="/deposit.html">Deposit</a></li>
+                               <li><a style="color: #fff" href="/withdraw.html">Withdraw</a></li>
+                               <li><a style="color: #fff" href="/transfer.html">Transfer</a></li>
+                               <li><a style="color: #fff" href="/billing.html">Billing</a></li>
+                               <li><a style="color: #fff" href="/accounts.html">Accounts</a></li>
+                               <li><a style="color: #fff" href="/profile.html">Profile</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                     <ul class="nav navbar-nav navbar-right">
+                        <li><a id="navbar-login-button" style="color: #fff" href="#"><h7>Login</h7></a></li>
+                     </ul>
+                  </div>
+               </div>
+            </nav>
+         </div>
+      </div>
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+       
+<!--- ACCOUNT CONTAINERS --->
+<div class="container-fluid">
+  <div class="big-bill-container">
+    <h1>Account Summary</h1>
+    <h6>select an account for details</h6><br><br>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col">
+            <a href="checking.html">
+            <div class="bill-container clickable">
+              <i class="fa-solid fa-money-bill"></i>
+              <div class="bill-info">
+                <div class="due-date">Checking ...3821</div>
+                <div class="bill-desc">$1,200.50</div>
+              </div>
+            </div>
+                </a>
+          </div>
+          <div class="col">
+              <a href="savings.html">
+            <div class="bill-container clickable">
+              <i class="fa-solid fa-sack-dollar"></i>
+              <div class="bill-info">
+                <div class="due-date">Savings ...5748</div>
+                <div class="bill-desc">$3,000.00</div>
+              </div>
+            </div>
+              </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col">
+              <a href="bitcoin.html">
+            <div class="bill-container clickable">
+              <i class="fa-brands fa-bitcoin"></i>
+              <div class="bill-info">
+                <div class="due-date">Bitcoin ...1337</div>
+                <div class="bill-desc">$20,201.21 (₿1)</div>
+              </div>
+            </div>
+              </a>
+          </div>
+          <div class="col">
+              <a href="credit-card.html">
+            <div class="bill-container clickable">
+              <i class="fa-solid fa-credit-card"></i>
+              <div class="bill-info">
+                <div class="due-date">Credit Card ...8521</div>
+                <div class="bill-desc">$0.00</div>
+              </div>
+            </div>
+              </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--- END ACCOUNT --->
+       
+       <!-- FOOTER -->
+    <footer>
+         <div class="footer">
+        
+    <div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h3 style="color: white">Contact Us</h3>Please <a style="color: white" href="/contact-us.html">click here</a> to get in touch with us about suggestions, comments, or collaboration ideas!
+        </div>
+        <div class="col-md-4 text-center">
+             <!--- SOCIAL ICONS ---->
+            <a href="https://www.pinterest.com/cordeeceps/_saved/" class="fa fa-pinterest fa-lg" target="_blank"></a>
+            <a href="https://www.facebook.com/Meghan.Bothoff.Shanahan/" class="fa fa-facebook fa-lg" target="_blank"></a>
+            <a href="https://twitter.com/Cordeeceps" class="fa fa-twitter fa-lg" target="_blank"></a>
+            <a href="https://www.instagram.com/cordeeceps/" class="fa fa-instagram fa-lg" target="_blank"></a>
+            <a href="https://www.deviantart.com/cordeeceps" class="fa fa-deviantart fa-lg" target="_blank"></a>
+            <a href="https://toyhou.se/Scientist" class="fa fa-book fa-lg" target="_blank"></a>
+            <!---END SOCIAL ICONS --->
+        </div>
+        <div class="col-md-4" style="text-align: right">
+            <h4>Credits</h4>All images are from Unsplash. Website coded by TTE (Team Tax Evasion). All rights reserved.
+        </div>
+                </div>
+           </div>
+         </div>
+      </footer>
+      <!-- /.container -->
+      <!--- JAVASCRIPT ---->
+       <script> 
+        
+//LOGIN SCRIPT
+        // Get references to the login buttons
+        var modalLoginButton = document.getElementById('modal-login-button');
+        var navbarLoginButton = document.getElementById('navbar-login-button');
+
+        // Add an event listener to the modal login button
+        modalLoginButton.addEventListener('click', function() {
+        // Change the text of the navbar login button to "Logout"
+        navbarLoginButton.textContent = "Logout";
+        });
+           
+        navbarLoginButton.addEventListener('click', function() {
+        // Change the text of the navbar login button to "Logout"
+        navbarLoginButton.textContent = "Login";
+        });
+       </script>
+      <!-- Bootstrap core JavaScript
+         ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+      <script src="../../dist/js/bootstrap.min.js"></script>
+      <!-- End container-fluid class -->
+   </body>
+</html>

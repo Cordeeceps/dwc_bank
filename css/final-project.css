@@ -144,12 +144,12 @@ button {
 /* LINK STYLING */
 
 a {
-	color: #003d8f;
+	color: white;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #FEEBB1;
+	color: white;
     text-decoration: none;
 }
 
