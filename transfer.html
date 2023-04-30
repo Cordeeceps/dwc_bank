@@ -305,112 +305,93 @@
       </div>
       <!-- Wrap the rest of the page in another container to center all the content. -->
        
-<!-- TRANSFER WINDOW --->
+<!--- TRANSFER WINDOW --->
 <div class="container-dashboard">
     <h1>Transfer Money</h1>
-    <h6>Select an account</h6>
+    <h6>select an account</h6>
     <div class="icon-container">
         <div class="form-container">
             <form>
                 <div class="form-group">
-                    <label class="form-label" for="dropdownFrom">From</label>
-                    <select class="form-control" id="dropdownFrom" onchange="updateBalance()">
+                    <label class="form-label" for="dropdown1">From</label>
+                    <select class="form-control" id="dropdown1" onchange="updateBalance('dropdown1')">
                         <option selected disabled>Select an account</option>
                         <option value="checking" data-balance="1200.50">Checking ...3821</option>
                         <option value="savings" data-balance="3000.00">Savings ...5748</option>
-                        <option value="bitcoin" data-balance="20201.21">Bitcoin ...1337</option>
+                        <option value="bitcoin" data-balance="20,201.21">Bitcoin ...1337</option>
                     </select>
                 </div>
-                <div class="form-group">
+                                <div class="form-group">
                     <label class="form-label" for="accountBalance">Account Balance</label>
                     <span style="color:white; font-size: 20px; font-family: Orbitron, sans-serif;" id="accountBalance">ACCOUNT BALANCE HERE</span>
                 </div>
+<div class="form-group">
+    <label class="form-label" for="dropdown2">Destination</label>
+    <select class="form-control" id="dropdown2" onchange="updateBalance(); updateBalance('dropdown3');">
+        <option selected disabled>Where would you like to send money?</option>
+        <option value="local-atm">One of my accounts</option>
+        <option value="delivery">To someone else's account</option>
+    </select>
+</div>
                 <div class="form-group">
-                    <label class="form-label" for="dropdownTo">To One of My Accounts</label>
-                    <select class="form-control" id="dropdownTo" onchange="updateBalance()">
-                        <option selected disabled>Select an Account</option>
-                        <option value="checking" data-balance="1200.50">Checking ...3821</option>
-                        <option value="savings" data-balance="3000.00">Savings ...5748</option>
-                        <option value="bitcoin" data-balance="20201.21">Bitcoin ...1337</option>
-                    </select>
+                    <label class="form-label" for="amount">Amount</label>
+                    <input class="form-control" type="text" id="amount" placeholder="$0.00">
                 </div>
-                <div class="form-group">
-                    <label class="form-label" for="destinationAccount">To Someone Else's Account</label>
-                    <input class="form-control" type="text" id="destinationAccount" placeholder="Enter account number">
-                </div>
+
                 <div style="text-align: center;">
-                    <button type="button" onclick="confirmTransfer()">CONFIRM</button>
+                    <button type="button" onclick="showConfirmationPopup()">TRANSFER</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-       
-<!-- POPUP WINDOW FOR TRANSFERRING TO ONE OF MY ACCOUNTS -->
-<div id="popup1" class="overlay">
-  <div class="popup">
-    <h2>Transfer Money</h2>
-    <a class="close" href="#">&times;</a>
-    <div class="content">
-        <form>
-            <div class="form-group">
-                <label class="form-label">From:</label>
-                <span class="account-details" id="fromAccountDetails"></span>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="toAccount">To:</label>
-                <span class="account-details" id="toAccountDetails"></span>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="amountToTransfer">Amount to Transfer:</label>
-                <input class="form-control" type="text" id="amountToTransfer" placeholder="$0.00">
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="transferDate">Transfer Date:</label>
-                <input class="form-control" type="date" id="transferDate">
-            </div>
-            <div class="form-group">
-                <label class="form-check-label" for="repeatTransfer">Repeat this transaction every month</label>
-                <input class="form-check-input" type="checkbox" id="repeatTransfer">
-            </div>
-            <div class="form-group">
-                <button type="button" onclick="transferToMyAccount()">Transfer</button>
-            </div>
-        </form>
+
+<!-- Transfer confirmation popup for transferring to one of my accounts -->
+<div id="local-atm-confirmation-popup" class="popup" style="display:none;">
+    <div class="popup-content">
+        <h2 style="margin-bottom:20px;">Select an Account</h2>
+        <p style="color:white; font-size: 18px; font-family: 'Roboto Mono', monospace;">Amount to Transfer: <br>$<span id="local-atm-withdrawal-amount"></span></p>
+        <label for="account-dropdown">Account to transfer to:</label>
+        <div class="form-group">
+            <select class="form-control" id="dropdown3" onchange="updateBalance('dropdown3')">
+                <option selected disabled>Select an account</option>
+                <option value="checking" data-balance="1200.50">Checking ...3821</option>
+                <option value="savings" data-balance="3000.00">Savings ...5748</option>
+                <option value="bitcoin" data-balance="20,201.21">Bitcoin ...1337</option>
+            </select>
+        </div>
+        <p style="color:white; font-size: 18px; font-family: 'Roboto Mono', monospace;">Account Balance:</p>
+        <div class="form-group">
+            <span style="color:white; font-size: 20px; font-family: Orbitron, sans-serif;" id="local-atm-account-balance">ACCOUNT BALANCE HERE</span>
+        </div>
+        <div style="text-align: center;">
+            <button type="button" onclick="addToAccountBalance('dropdown3')">SUBMIT</button>
+            <button type="button" onclick="hideConfirmationPopup()">CANCEL</button>
+        </div>
     </div>
-  </div>
 </div>
-<!-- POPUP WINDOW FOR TRANSFERRING TO SOMEONE ELSE'S ACCOUNT -->
-<div id="popup2" class="overlay">
-  <div class="popup">
-    <h2>Transfer Money</h2>
-    <a class="close" href="#">&times;</a>
-    <div class="content">
-        <form>
-            <div class="form-group">
-                <label class="form-label">From:</label>
-                <span class="account-details" id="fromAccountDetails2"></span>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="toAccount2">To:</label>
-                <span class="account-details" id="toAccountDetails2"></span>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="destinationBalance">Destination Balance:</label>
-                <span class="balance-details">$1234.56</span>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="amountToTransfer2">Amount to Transfer:</label>
-                <input class="form-control" type="text" id="amountToTransfer2" placeholder="$0.00">
-            </div>
-            <div class="form-group">
-                <button type="button" onclick="transferToOtherAccount()">Transfer</button>
-            </div>
-        </form>
+
+
+<!-- Transfer confirmation popup for another person's account -->
+<div id="delivery-confirmation-popup" class="popup" style="display:none;">
+    <div class="popup-content">
+        <h2 style="margin-bottom:20px;">Confirm Transfer</h2>
+        <p style="color:white; font-size: 18px; font-family: 'Roboto Mono', monospace;">Transfer Amount: <br>$<span id="delivery-withdrawal-amount"></span></p>
+        <p style="color:white; font-size: 18px; font-family: 'Roboto Mono', monospace;">Account Information: <br></p>
+        <div class="form-group">
+            <label class="form-label" for="pickupAddress"></label><br>
+            <input class="form-control" type="text" id="pickupAddress" placeholder="Account Number">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" id="pickupCity" placeholder="Routing Number">
+        </div>
+        <div style="text-align: center;">
+            <button type="button" onclick="subtractFromAccountBalance(document.getElementById('dropdown1').value, document.getElementById('amount').value)">SUBMIT</button>
+            <button type="button" onclick="hideConfirmationPopup()">CANCEL</button>
+        </div>
     </div>
-  </div>
-</div>      
-<!--- END TRANSFER --->
+</div>
+<!--- END OTHER PERSON'S ACCOUNT TRANSFER --->
        
        <!-- FOOTER -->
     <footer>
@@ -443,11 +424,11 @@
       <!--- JAVASCRIPT ---->
 <script>
 // BALANCE SCRIPT
-function updateBalance() {
-  var dropdown = document.getElementById("dropdown1");
-  var selectedOption = dropdown.options[dropdown.selectedIndex];
-  var balance = parseFloat(selectedOption.getAttribute("data-balance"));
-  document.getElementById("accountBalance").textContent = "$" + balance.toFixed(2);
+function updateBalance(dropdownId) {
+  const dropdown = document.getElementById(dropdownId);
+  const balanceSpan = document.getElementById("accountBalance");
+  const balance = dropdown.options[dropdown.selectedIndex].getAttribute("data-balance");
+  balanceSpan.textContent = "$" + balance;
 }
 
 // WITHDRAWAL SCRIPT
@@ -492,18 +473,72 @@ function withdraw() {
 
 // Function to show the withdrawal confirmation popup
 function showConfirmationPopup() {
-  var dropdown = document.getElementById("dropdown2");
-  var selectedOption = dropdown.options[dropdown.selectedIndex].value;
-  var withdrawalAmount = parseFloat(document.getElementById("amount").value);
+      var withdrawalAmount = document.getElementById("amount").value;
+    if (document.getElementById("dropdown2").value == "local-atm") {
+        document.getElementById("local-atm-confirmation-popup").style.display = "block";
+        document.getElementById("local-atm-withdrawal-amount").innerHTML = withdrawalAmount;
+    } else if (document.getElementById("dropdown2").value == "delivery") {
+        document.getElementById("delivery-confirmation-popup").style.display = "block";
+        document.getElementById("delivery-withdrawal-amount").innerHTML = withdrawalAmount;
+    }
+    
+  // Get the selected "from" account
+  var fromAccount = document.getElementById("dropdown1").value;
 
-  if (selectedOption === "local-atm") {
-    document.getElementById("local-atm-withdrawal-amount").textContent = withdrawalAmount.toFixed(2);
-    document.getElementById("local-atm-confirmation-popup").style.display = "block";
-  } else if (selectedOption === "delivery") {
-    document.getElementById("delivery-withdrawal-amount").textContent = withdrawalAmount.toFixed(2);
-    document.getElementById("delivery-confirmation-popup").style.display = "block";
+  // Get the entered transfer amount
+  var transferAmount = parseFloat(document.getElementById("amount").value);
+
+  // Show the transfer confirmation popup
+  document.getElementById("local-atm-confirmation-popup").style.display = "block";
+
+  // Set the amount and account balance on the confirmation popup
+  document.getElementById("local-atm-withdrawal-amount").innerHTML = transferAmount.toFixed(2);
+  var selectedAccount = document.querySelector('#dropdown1 option:checked');
+  document.getElementById("local-atm-account-balance").textContent = selectedAccount.getAttribute('data-balance');
+
+  // Save the selected "to" account for later use
+  var toAccount = null;
+  var toAccountElement = document.getElementById("dropdown3");
+  if (toAccountElement) {
+    toAccount = toAccountElement.value;
+  }
+
+  // Handle the "submit" button on the transfer confirmation popup
+  var submitButton = document.getElementById("local-atm-confirmation-popup").querySelector("button[type='button']");
+  if (submitButton) {
+    submitButton.onclick = function() {
+      // Subtract the transfer amount from the "from" account
+      var fromAccountBalanceElement = document.querySelector("#dropdown1 option[value='" + fromAccount + "']");
+      if (fromAccountBalanceElement) {
+        var fromAccountBalance = parseFloat(fromAccountBalanceElement.getAttribute("data-balance"));
+        fromAccountBalance -= transferAmount;
+        fromAccountBalanceElement.setAttribute("data-balance", fromAccountBalance.toFixed(2));
+        fromAccountBalanceElement.text = fromAccountBalanceElement.text.replace(/\$\d+\.\d{2}/, "$" + fromAccountBalance.toFixed(2));
+      }
+
+      // Add the transfer amount to the "to" account
+      var toAccountBalanceElement = document.querySelector("#dropdown3 option[value='" + toAccount + "']");
+      if (toAccountBalanceElement) {
+        var toAccountBalance = parseFloat(toAccountBalanceElement.getAttribute("data-balance"));
+        toAccountBalance += transferAmount;
+        toAccountBalanceElement.setAttribute("data-balance", toAccountBalance.toFixed(2));
+        toAccountBalanceElement.text = toAccountBalanceElement.text.replace(/\$\d+\.\d{2}/, "$" + toAccountBalance.toFixed(2));
+      } else {
+        alert("Error: Please select a 'To' account.");
+        return;
+      }
+
+      // Update the account balances on the main page
+      updateBalance("dropdown1");
+      updateBalance("dropdown3");
+
+      // Hide the transfer confirmation popup
+      hideConfirmationPopup();
+    };
   }
 }
+
+
 
 // Function to show the corresponding popup based on the selected destination
 function showPopup() {
@@ -524,19 +559,23 @@ function hideConfirmationPopup() {
 // Function to withdraw money from a local ATM
 function withdrawFromLocalATM() {
   // Get the selected account, withdrawal amount, and branch from the form
-  var account = document.getElementById("dropdown1").value;
-  var withdrawalAmount = parseFloat(document.getElementById("amount").value);
-  var branch = document.getElementById("branch-dropdown").value;
+  var account = document.getElementById("dropdown3").value;
+  var withdrawalAmount = parseFloat(document.getElementById("local-atm-withdrawal-amount").textContent);
+  var branch = "Local ATM"; // Hardcoded for now, but could be a dropdown in the future
 
-  // Update the account balance
-  var selectedOption = document.querySelector("#dropdown1 option:checked");
-  var balance = parseFloat(selectedOption.getAttribute("data-balance"));
-  var newBalance = balance - withdrawalAmount;
-  selectedOption.setAttribute("data-balance", newBalance.toFixed(2));
-  updateBalance();
+  // Find the selected account and update its balance
+  var dropdown = document.getElementById("dropdown3");
+  var selectedOption = dropdown.options[dropdown.selectedIndex];
+  var accountBalance = parseFloat(selectedOption.getAttribute("data-balance"));
+  accountBalance -= withdrawalAmount;
+  selectedOption.setAttribute("data-balance", accountBalance.toFixed(2));
 
-  // Hide the confirmation popup
+  // Update the account balance in the popup
+  document.getElementById("local-atm-account-balance").textContent = "$" + accountBalance.toFixed(2);
+
+  // Hide the popup and show a success message
   hideConfirmationPopup();
+  alert("Your transfer of $" + withdrawalAmount.toFixed(2) + " to your " + account + " account has been processed.");
 }
 
 // Function to withdraw money for delivery
@@ -556,6 +595,85 @@ function withdrawForDelivery() {
   // Hide the confirmation popup
   hideConfirmationPopup();
 }
+
+  // Function to show/hide target input fields based on the selected option in dropdown2
+  function showTargetInput() {
+    var dropdown = document.getElementById("dropdown2");
+    var selectedOption = dropdown.options[dropdown.selectedIndex];
+    var targetInput = document.getElementById("target-input");
+
+    if (selectedOption.value == "local-atm") {
+      targetInput.style.display = "none";
+    } else {
+      targetInput.style.display = "block";
+    }
+  }
+    
+//TRANSFER SCRIPT 
+function updateAccountBalance() {
+  // Get the selected account
+  var accountDropdown = document.getElementById("account-dropdown");
+  var selectedAccount = accountDropdown.options[accountDropdown.selectedIndex];
+  
+  // Get the balance of the selected account
+  var balance = selectedAccount.getAttribute("data-balance");
+  
+  // Update the account balance in the confirmation popup window
+  var accountBalanceSpan = document.getElementById("local-atm-account-balance");
+  accountBalanceSpan.innerHTML = "$" + balance;
+}
+    
+function showLocalAtmConfirmationPopup() {
+  // Show the confirmation popup window
+  var confirmationPopup = document.getElementById("local-atm-confirmation-popup");
+  confirmationPopup.style.display = "block";
+  
+  // Update the account balance in the confirmation popup window
+  updateAccountBalance();
+}
+    
+function addToAccountBalance() {
+  var accountDropdown = document.getElementById("dropdown3");
+  var selectedAccount = accountDropdown.options[accountDropdown.selectedIndex].value;
+  if (selectedAccount == null || selectedAccount === '') {
+    alert("Please select a 'To' account.");
+    return;
+  }
+  var amount = document.getElementById("local-atm-withdrawal-amount").innerText;
+  var balance = document.getElementById("local-atm-account-balance").innerText;
+  var newBalance = parseFloat(balance) + parseFloat(amount.replace("$", ""));
+  document.getElementById("local-atm-account-balance").innerText = "$" + newBalance.toFixed(2);
+  hideConfirmationPopup();
+  alert("Transfer successful.");
+}
+    
+function subtractFromAccountBalance() {
+  const accountNumber = document.getElementById("pickupAddress").value;
+  const routingNumber = document.getElementById("pickupCity").value;
+  const withdrawalAmount = parseFloat(document.getElementById("delivery-withdrawal-amount").textContent);
+  const accountDropdown = document.getElementById("dropdown1");
+  const selectedOption = accountDropdown.options[accountDropdown.selectedIndex];
+  const accountType = selectedOption.value;
+  let accountBalance = parseFloat(selectedOption.getAttribute("data-balance"));
+
+  if (isNaN(withdrawalAmount) || withdrawalAmount <= 0) {
+    alert("Error: Please enter a valid withdrawal amount.");
+    return;
+  }
+
+  if (withdrawalAmount > accountBalance) {
+    alert("Error: You do not have enough funds to withdraw this amount.");
+    return;
+  }
+
+  accountBalance -= withdrawalAmount;
+  selectedOption.setAttribute("data-balance", accountBalance.toFixed(2));
+  document.getElementById("local-atm-account-balance").textContent = "$" + accountBalance.toFixed(2);
+
+  alert("Transfer of $" + withdrawalAmount.toFixed(2) + " to account " + accountNumber + " has been processed.");
+
+  hideConfirmationPopup();
+}
     
   // LOGIN SCRIPT
   // Get references to the login buttons
@@ -572,19 +690,6 @@ function withdrawForDelivery() {
     // Change the text of the navbar login button to "Login"
     navbarLoginButton.textContent = "Login";
   });
-
-  // Function to show/hide target input fields based on the selected option in dropdown2
-  function showTargetInput() {
-    var dropdown = document.getElementById("dropdown2");
-    var selectedOption = dropdown.options[dropdown.selectedIndex];
-    var targetInput = document.getElementById("target-input");
-
-    if (selectedOption.value == "local-atm") {
-      targetInput.style.display = "none";
-    } else {
-      targetInput.style.display = "block";
-    }
-  }
 </script>
 
       <!-- Bootstrap core JavaScript
